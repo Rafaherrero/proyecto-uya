@@ -32,11 +32,11 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# Cosas
-
+# Todos los ficheros temporales
 *~
-node_modules
-vendor
+
+# Dependencias front-end
 public/vendor
-src/sass/.sass-cache/
-public/css/
+
+# Cualquier de public, ya que usamos sass
+public/stylesheets/*.css

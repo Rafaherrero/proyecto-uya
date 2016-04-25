@@ -14,6 +14,6 @@ charset = utf-8
 indent_style = space
 indent_size = 4
 
-[*.scss]
+[*.sass]
 indent_style = space
 indent_size = 2
