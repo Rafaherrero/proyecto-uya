@@ -20,8 +20,14 @@
     "Dinero",
     "Gasolina"
   ],
-  "author": ["Rafael Herrero", "Daniel Ramos"],
-  "contributors": ["Rafael Herrero", "Daniel Ramos"],
+  "author": [
+    "Rafael Herrero",
+    "Daniel Ramos"
+  ],
+  "contributors": [
+    "Rafael Herrero",
+    "Daniel Ramos"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Rafaherrero/proyecto-uya/issues"
@@ -31,6 +37,14 @@
     "npm": "^3.6.0",
     "node": "^5.6.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1"
+  }
 }
-

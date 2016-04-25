@@ -1,0 +1,25 @@
+{
+  "name": "proyecto-uya",
+  "description": "Proyecto para la asignatura de Usabilidad y Accesibilidad",
+  "main": "bin/www",
+  "authors": [
+    "Rafael Herrero",
+    "Daniel Ramos"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Car",
+    "Sharing",
+    "Share",
+    "Compartir",
+    "Amigues",
+    "Barato",
+    "Dinero",
+    "Gasolina"
+  ],
+  "homepage": "https://github.com/Rafaherrero/proyecto-uya",
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "Materialize": "materialize#^0.97.6"
+  }
+}
