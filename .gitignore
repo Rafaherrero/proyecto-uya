@@ -31,3 +31,13 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# Cosas
+
+*~
+node_modules
+vendor
+public/vendor
+src/sass/.sass-cache/
+public/css/
+db/data

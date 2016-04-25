@@ -1,0 +1,36 @@
+{
+  "name": "proyecto-uya",
+  "version": "1.0.0",
+  "description": "Proyecto para la asignatura de Usabilidad y Accesibilidad",
+  "main": "bin/www",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rafaherrero/proyecto-uya.git"
+  },
+  "keywords": [
+    "Car",
+    "Sharing",
+    "Share",
+    "Compartir",
+    "Amigues",
+    "Barato",
+    "Dinero",
+    "Gasolina"
+  ],
+  "author": ["Rafael Herrero", "Daniel Ramos"],
+  "contributors": ["Rafael Herrero", "Daniel Ramos"],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rafaherrero/proyecto-uya/issues"
+  },
+  "homepage": "https://github.com/Rafaherrero/proyecto-uya#readme",
+  "engines": {
+    "npm": "^3.6.0",
+    "node": "^5.6.0"
+  },
+  "dependencies": {}
+}
+
