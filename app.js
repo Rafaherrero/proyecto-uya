@@ -39,7 +39,7 @@
     app.use(require('node-sass-middleware')({
         src: path.join(__dirname, 'assets/public'),
         dest: path.join(__dirname, 'public'),
-        indentedSyntax: false,
+        outputStyle: 'compressed',
         sourceMap: false
     }));
 
