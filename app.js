@@ -37,7 +37,7 @@
 
     // Usar el middleware de node-sass, para que compile en vivo y en directo
     app.use(require('node-sass-middleware')({
-        src: path.join(__dirname, 'assets/public'),
+        src: path.join(__dirname, 'assets/frontend'),
         dest: path.join(__dirname, 'public'),
         outputStyle: 'compressed',
         sourceMap: false
