@@ -24,7 +24,7 @@ gulp.task('browser-sync', ['nodemon'], () => {
             'public/vendor/**/*.*',
             'assets/public/stylesheets/**/*.scss'
         ],
-        port: 3000
+        port: 8085
     });
 });
 

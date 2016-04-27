@@ -46,7 +46,9 @@
     "node-sass-middleware": "^0.9.8"
   },
   "devDependencies": {
+    "browser-sync": "^2.12.5",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2"
+    "gulp-clean": "^0.3.2",
+    "gulp-nodemon": "^2.0.6"
   }
 }
