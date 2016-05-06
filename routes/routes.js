@@ -6,11 +6,13 @@
         const login = require('./login')(passport);
         const signup = require('./signup')(passport);
         const logout = require('./logout')();
+        const about = require('./about');
 
         // Rutas. Por defecto, que vaya al index.ejs
         app.use('/', index);
         app.use('/login', login);
         app.use('/signup', signup);
         app.use('/logout', logout);
+        app.use('/about', about);
     };
 })();

@@ -42,7 +42,7 @@
             ui: {
                 port: 8086
             },
-            reloadDelay: 200
+            reloadDelay: 600
         });
     });
 
@@ -59,7 +59,10 @@
             ],
             (file) => {
                 console.log('[GLS] File changed');
-                server.notify.apply(server, [file]);
+                var promise = server.stop();
+                promise.then(function(result) {
+                    server.start();
+                });
             }
         );
 
