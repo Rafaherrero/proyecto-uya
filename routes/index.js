@@ -5,8 +5,12 @@
     // Página principal
     router.get('/', (req, res) => {
         res.render('index', {
-            title: 'Sharis'
+            title: 'Sharis',
+            user: req.user,
+            mesageLogin: req.flash('loginMessage'),
+            mesageSingup: req.flash('signupMessage')
         });
     });
+
     module.exports = router;
 })();

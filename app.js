@@ -1,39 +1,71 @@
 (() => {
     'use strict';
-    const express = require('express'),
-        logger = require('morgan'),
-        bodyParser = require('body-parser'),
-        path = require('path');
+    const express      = require('express'),
+          logger       = require('morgan'),
+          ejs          = require('ejs'),
+          mongoose     = require('mongoose'),
+          path         = require('path'),
+          bodyParser   = require('body-parser'),
+          cookieParser = require('cookie-parser'),
+          passport     = require('passport'),
+          session      = require('express-session'),
+          flash        = require('connect-flash');
 
     let app = express();
-
-    // Usar bodyParser como Middleware
-    app.use(bodyParser.urlencoded({
-        extended: true
-    }));
-
-    app.use(bodyParser.json());
-
-    // Establecer la ruta de las vistas
-    app.set('views', `${__dirname}/views`);
-
-    // Motor de las vistas, que podría ser Jade, Mustache. Pero en la práctica vamos
-    // A usar EJS (EmbeddedJS)
-    app.set('view engine', 'ejs');
-
-    // Establecer el modo del logger
-    app.use(logger('dev'));
-
-    // Guardamos las rutas que nos proporciona index en index
-    const index = require('./routes/index');
 
     // Capturamos la variable de entorno NODE_ENV
     const env = process.env.NODE_ENV || 'development';
     app.locals.ENV = env;
     app.locals.ENV_DEVELOPMENT = (env === 'development');
 
-    // Rutas. Por defecto, que vaya al index.ejs
-    app.use('/', index);
+    // Cargar la configuración de mongoose
+    var configDB = require('./config/database.js');
+
+    // Conectarse a mongo
+    mongoose.connect(configDB.url);
+
+    // Usamos cookieParser para guardar el inicio de sesión
+    app.use(cookieParser());
+
+    // Configurar la sesión de express
+    app.use(session({
+        secret: 'rafadaniproyecto', // Clave de seguridad para firmar las cookies
+        resave: false, // para no guardar la cookie en session store, crea condiciones de carrera
+        saveUninitialized: true // crea una sesión no inicializada en el navegador
+    }));
+
+    // Inicializa passport
+    app.use(passport.initialize());
+
+    // Para guardar las sesiones, usa el express-session
+    app.use(passport.session());
+
+    // Flash para enviar mensajes relacionados con la sesión
+    app.use(flash());
+
+    // Usar bodyParser como Middleware
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+
+    // Transforma la petición HTTP en un JSON
+    app.use(bodyParser.json());
+
+    // Establecer la ruta de las vistas
+    app.set('views', `${__dirname}/views`);
+
+    // Cargar helpers de EJS
+    require('express-helpers')(app);
+
+    // Motor de las vistas, que podría ser Jade, Mustache. Pero en la práctica vamos
+    // A usar EJS (EmbeddedJS)
+    app.set('view engine', 'ejs');
+
+    // Establecer el modo del logger, TODO: mirar el modo producción
+    app.use(logger('dev'));
+
+    require('./config/passport')(passport);
+    require('./routes/routes.js')(app, passport); //Cargar todas las rutas
 
     // Usar el middleware de node-sass, para que compile en vivo y en directo
     app.use(require('node-sass-middleware')({
@@ -43,6 +75,7 @@
         sourceMap: false
     }));
 
+    // servir de forma estática los elementos de public
     app.use(express.static(`${__dirname}/public`));
 
     // Si se produce un error en la ruta, enviamos un not found

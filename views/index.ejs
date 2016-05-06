@@ -4,4 +4,59 @@
     <p>Página Principal</p>
 </div>
 
+<!-- TODO: Rehacer esto que es pa probar -->
+
+<h1>Iniciar sesion</h1>
+<form action="/login" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+    </form>
+
+<h1>Registrarse</h1>
+
+    <form action="/signup" method="post">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+    </form>
+
+<h1>Tus datos: </h1>
+<%  if(user == null){
+        user = {}
+        user._id = "???";
+        user.local = {
+            email: "????",
+            password: "???"
+        };
+    } %>
+
+<h1>Cerrrar sesión</h1>
+<%- link_to('Cerrar sesión', '/logout', {Class: 'btn'}) %>
+
+<br>
+
+<strong>id</strong>: <%= user._id %><br>
+<strong>email</strong>: <%= user.local.email %><br>
+<strong>password</strong>: <%= user.local.password %>
+
+<br>
+<span>Mensaje del servidor al iniciar sesión: <%= mesageLogin %></span>
+<br>
+<span>Mensaje del servidor al registrarse: <%= mesageSingup %></span>
+
 <% include footer %>
