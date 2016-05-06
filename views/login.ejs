@@ -3,29 +3,36 @@
 
 <div class="container">
     <div class="row">
-        <div class="col s12 m6 offset-m3">
+        <div class="col s12 m6 offset-m3" role="main">
             <h1>Iniciar sesión</h1>
             <% if (mesageLogin.length != 0) { %>
-                    <div class="card-panel red lighten-2">
+                    <div class="card-panel red lighten-2" role="alert">
                         <%= mesageLogin %>
                     </div>
             <% } %>
             <%- form_tag('/login') %>
-                <div class="input-field col s12">
-                    <%- email_field_tag('email', {class: 'validate', 'required': 'true'}) %>
-                    <%- label_for('email', {'data-error': 'Formato de correo erróneo', 'data-success': 'Válido'}) %>
-                    <!-- TODO: revisar que el email no existe en la base de datos -->
-                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <%- email_field_tag('email', {class: 'validate', 'required': '', 'aria-required': 'true'}) %>
+                            <%- label_for('email', {'data-error': 'Formato de correo erróneo', 'data-success': 'Válido'}) %>
+                        </div>
+                    </div>
 
-                <div class="input-field col s12">
-                    <%- password_field_tag('password', {class: 'validate', 'required': 'true', minlength: '10'}) %>
-                    <%- label_for('password', {'data-error': 'Contraseña mínimo de 10 carácteres', 'data-success': 'Válido'}) %>
-                </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <%- password_field_tag('password', {class: 'validate', 'required': '', 'aria-required': 'true', minlength: '10'}) %>
+                            <%- label_for('password', {'data-error': 'Contraseña mínimo de 10 carácteres', 'data-success': 'Válido'}) %>
+                        </div>
+                    </div>
 
-                <div class="input-field col s12">
-                    <%- submit_tag('Iniciar Sesión', {class: 'btn'}) %>
-                    <%- form_end_tag() %>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <%- submit_tag('Iniciar Sesión', {class: 'btn'}) %>
+                        </div>
+                    </div>
                 </div>
+            <%- form_end_tag() %>
         </div>
     </div>
 </div>
