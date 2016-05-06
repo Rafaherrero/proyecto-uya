@@ -54,7 +54,7 @@
     // Establecer la ruta de las vistas
     app.set('views', `${__dirname}/views`);
 
-    // Cargar helpers de EJS
+    // Cargar helpers de EJS. Documentación: https://github.com/tanema/express-helpers/wiki
     require('express-helpers')(app);
 
     // Motor de las vistas, que podría ser Jade, Mustache. Pero en la práctica vamos
