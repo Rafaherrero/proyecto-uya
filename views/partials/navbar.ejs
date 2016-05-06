@@ -1,0 +1,19 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Logo</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <% if (user) { %>
+                <li><span>Hola <%= user.local.email %></span></li>
+                <li><%- link_to('Cerrar sesión', '/logout') %></li>
+            <% } else { %>
+                <li><a href="/login">Iniciar Sesión</a></li>
+            <% } %>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/login">Iniciar Sesión</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </div>
+</nav>

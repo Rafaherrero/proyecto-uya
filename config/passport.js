@@ -18,7 +18,7 @@ module.exports = function(passport) {
     passport.use('local-signup', new LocalStrategy(
         {
             // por defecto, local strategy usa el nombre de usuaro y la contraseña,
-            // pero nosotros usamos el email y contrasela.
+            // pero nosotros usamos el email y contraseña.
             usernameField : 'email',
             passwordField : 'password',
             passReqToCallback : true // nos permite devolver la petición a la callback
@@ -67,7 +67,7 @@ module.exports = function(passport) {
 
                 // Si existe el usuario, pero la contraseña está mal, devolver error
                 if (!user.validPassword(password))
-                    return done(null, false, req.flash('loginMessage', 'La contrasela es errónea.'));
+                    return done(null, false, req.flash('loginMessage', 'La contraseña es errónea.'));
 
                 // si todo fue bien, devolver el usuario
                 return done(null, user);
