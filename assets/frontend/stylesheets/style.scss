@@ -1,3 +1,20 @@
+$colorfuerte: #880e4f;
+$colormedio: #ad1457;
+$colorflojo: #c2185b;
+$colorflojito: #d81b60;
+$colorfondo: #fce4ec;
+
 body {
-  // background-color: grey;
+  background-color: $colorfondo;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.nav-wrapper {
+  background-color: $colorfuerte;
 }
