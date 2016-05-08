@@ -1,19 +1,19 @@
 <% include partials/head %>
 <% include partials/navbar %>
 <main>
-    <div class="parallax-container">
+    <div class="parallax-container" aria-level="0">
         <div class="parallax">
             <img src="images/girl_car_1.jpg">
         </div>
     </div>
     <div class="container-fluid">
         <div class="divider"></div>
-        <div class="row center">
+        <div class="row center" role="article" aria-level="1">
             <div class="col s12">
-                <h1>SHARIS MADE IT EASY!</h1>
+                <h1 role="heading">SHARIS MADE IT EASY!</h1>
             </div>
 
-            <div class="col s12 m6 l3">
+            <div class="col s12 m6 l3" aria-level="2">
                 <div class="card hoverable">
                     <div class="card-content center">
                         <span class="card-title"><i class="material-icons large">payment</i></span>
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="col s12 m6 l3">
+            <div class="col s12 m6 l3" aria-level="2">
                 <div class="card hoverable">
                     <div class="card-content center">
                         <span class="card-title"><i class="material-icons large">perm_scan_wifi</i></span>
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col s12 m6 l3">
+            <div class="col s12 m6 l3" aria-level="2">
                 <div class="card hoverable">
                     <div class="card-content center">
                         <span class="card-title"><i class="material-icons large">thumb_up</i></span>
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="col s12 m6 l3">
+            <div class="col s12 m6 l3" aria-level="2">
                 <div class="card hoverable">
                     <div class="card-content center">
                         <span class="card-title"><i class="material-icons large">settings_cell</i></span>
@@ -51,14 +51,16 @@
 
         </div>
     </div>
-    <div class="parallax-container">
-        <div class="parallax"><img src="images/phone_3.jpg"></div>
+    <div class="parallax-container" aria-level="3">
+        <div class="parallax">
+            <img src="images/phone_3.jpg">
+        </div>
     </div>
 
-    <div class="row center">
+    <div class="row center" role="article" aria-level="4">
         <!-- esto es para probar nada mas -->
         <div class="col s12 m8 offset-m2">
-            <h1>Registrarse</h1>
+            <h1 role="heading">Registrarse</h1>
 
             <form action="/signup" method="post">
                 <div class="form-group">
@@ -74,9 +76,9 @@
             </form>
         </div>
     </div>
-    <div class="row center">
+    <div class="row center" role="article" aria-level="5">
         <div class="col s12 m8 offset-m2">
-            <h1>Tus datos: </h1>
+            <h1 role="heading">Tus datos: </h1>
             <%  if(user == null){
                 user = {}
                 user._id = "???";
@@ -85,7 +87,7 @@
                     password: "???"
                 };
             } else { %>
-            <h1>Cerrrar sesión</h1>
+            <h1 role="heading">Cerrrar sesión</h1>
             <%- link_to('Cerrar sesión', '/logout', {Class: 'btn'}) %>
 
             <% } %>
