@@ -1,50 +1,105 @@
 <% include partials/head %>
 <% include partials/navbar %>
-
-<div>
-    <p>Página Principal</p>
-</div>
-
-
-<!-- esto es para probar nada mas -->
-<h1>Registrarse</h1>
-
-    <form action="/signup" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
+<main>
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="images/girl_car_1.jpg">
         </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
+    </div>
+    <div class="container-fluid">
+        <div class="divider"></div>
+        <div class="row center">
+            <div class="col s12">
+                <h1>SHARIS MADE IT EASY!</h1>
+            </div>
+
+            <div class="col s12 m6 l3">
+                <div class="card hoverable">
+                    <div class="card-content center">
+                        <span class="card-title"><i class="material-icons large">payment</i></span>
+                        <p>SHARIS le permite ahorrar tiempo y dinero a la hora de realizar sus viajes compartiendo vehículos con otros interesados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 l3">
+                <div class="card hoverable">
+                    <div class="card-content center">
+                        <span class="card-title"><i class="material-icons large">perm_scan_wifi</i></span>
+                        <p>Con SHARIS estará permanentemente conectado, por lo que conocerá en todo momento donde se encuentra el conductor. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 l3">
+                <div class="card hoverable">
+                    <div class="card-content center">
+                        <span class="card-title"><i class="material-icons large">thumb_up</i></span>
+                        <p>SHARIS cuenta actualmente con la valoración máxima de 5 estrellas en las principales plataformas de App Store y Google Play.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 l3">
+                <div class="card hoverable">
+                    <div class="card-content center">
+                        <span class="card-title"><i class="material-icons large">settings_cell</i></span>
+                        <p>Al utilizar las últimas tecnologías disponibles en el mercado, podrá usar SHARIS desde la plataforma que usted desee. </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="images/phone_3.jpg"></div>
+    </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-    </form>
+    <div class="row center">
+        <!-- esto es para probar nada mas -->
+        <div class="col s12 m8 offset-m2">
+            <h1>Registrarse</h1>
 
-<h1>Tus datos: </h1>
-<%  if(user == null){
-        user = {}
-        user._id = "???";
-        user.local = {
-            email: "????",
-            password: "???"
-        };
-    } else { %>
-        <h1>Cerrrar sesión</h1>
-        <%- link_to('Cerrar sesión', '/logout', {Class: 'btn'}) %>
+            <form action="/signup" method="post">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
 
-    <% } %>
+                <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+            </form>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col s12 m8 offset-m2">
+            <h1>Tus datos: </h1>
+            <%  if(user == null){
+                user = {}
+                user._id = "???";
+                user.local = {
+                    email: "????",
+                    password: "???"
+                };
+            } else { %>
+            <h1>Cerrrar sesión</h1>
+            <%- link_to('Cerrar sesión', '/logout', {Class: 'btn'}) %>
 
+            <% } %>
+            <br>
 
+            <strong>id</strong>: <%= user._id %><br>
+            <strong>email</strong>: <%= user.local.email %><br>
+            <strong>password</strong>: <%= user.local.password %>
 
-<br>
-
-<strong>id</strong>: <%= user._id %><br>
-<strong>email</strong>: <%= user.local.email %><br>
-<strong>password</strong>: <%= user.local.password %>
-
-<br>
-<span>Mensaje del servidor al registrarte: <%= messageSingup %></span>
+            <br>
+            <span>Mensaje del servidor al registrarte: <%= messageSingup %></span>
+        </div>
+    </div>
+</main>
 
 <% include partials/footer %>
+<% include partials/scripts %>

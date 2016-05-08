@@ -1,8 +1,8 @@
-$colorfuerte: #880e4f;
-$colormedio: #ad1457;
-$colorflojo: #c2185b;
-$colorflojito: #d81b60;
-$colorfondo: #ffebee;
+$colorfuerte: #3e2723;
+$colormedio: #4e342e;
+$colorflojo: #5d4037;
+$colorflojito: #6d4c41;
+$colorfondo: #efebe9;
 
 body {
   background-color: $colorfondo;
@@ -23,17 +23,7 @@ main {
   background-color: $colorfuerte !important;
   padding-top: 0px !important;
   margin-top: 0px !important;
-}
-
-#all_about{
-	background: url('../images/About.jpg') fixed;
-	background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  margin-bottom: 0 !important;
-}
+}	
 
 .link-footer{
 	text-decoration: underline;
@@ -41,4 +31,14 @@ main {
 
 .link-footer:hover{
 	text-decoration: none;
+}
+
+#inicio_sesion{
+	background: url('../images/Fondo_Inicio_Sesion.jpg');
+	background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 88.5vh;
+  justify-content: center;
+  margin-bottom: 0 !important;
 }
