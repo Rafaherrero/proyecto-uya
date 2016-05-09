@@ -59,7 +59,7 @@
 
     // Motor de las vistas, que podría ser Jade, Mustache. Pero en la práctica vamos
     // A usar EJS (EmbeddedJS)
-    app.set('view engine', 'ejs');
+    /*app.set('view engine', 'ejs');*/
 
     // Establecer el modo del logger, TODO: mirar el modo producción
     app.use(logger('dev'));

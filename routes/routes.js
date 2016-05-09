@@ -1,6 +1,6 @@
 (() => {
     'use strict';
-    module.exports = (app, passport) => {
+    module.exports = (app, passport) => {/*
         // Guardamos las rutas que nos proporciona index en index
         const index = require('./index');
         const login = require('./login')(passport);
@@ -13,6 +13,9 @@
         app.use('/login', login);
         app.use('/signup', signup);
         app.use('/logout', logout);
-        app.use('/about', about);
+        app.use('/about', about);*/
+        app.get('/', function(req, res){
+            res.send('hello world');
+        });
     };
 })();

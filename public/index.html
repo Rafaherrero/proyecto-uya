@@ -1,19 +1,50 @@
-<% include partials/head %>
-<% include partials/navbar %>
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Sharis</title>
+    <link rel='stylesheet' href='/vendor/Materialize/dist/css/materialize.css' type='text/css' charset='utf-8' />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' type='text/css' charset='utf-8' />
+
+    <link rel='stylesheet' href='/stylesheets/style.css' type='text/css' charset='utf-8' />
+
+    
+</head>
+<body>
+
+<nav class="navbar-fixed">
+    <div class="nav-wrapper z-depth-5 hoverable">
+        <a href="/" class="brand-logo center"><img src="images/Logo_Sharis_grande.svg"></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            
+                <li><a href="/login">Iniciar Sesión</a></li>
+            
+            <li><a href="/about">About</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/login">Iniciar Sesión</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </div>
+</nav>
+
 <main>
-    <div class="parallax-container" aria-level="0">
+    <div class="parallax-container" aria-level="0" tabindex="0">
         <div class="parallax">
-            <img src="images/girl_car_1.jpg">
+            <img src="images/girl_car_1.jpg" alt="Chique disfrutando de su paseo con Sharis">
         </div>
     </div>
     <div class="container-fluid">
         <div class="divider"></div>
-        <div class="row center" role="article" aria-level="1">
+        <div class="row center" role="article" aria-level="1" tabindex="1">
             <div class="col s12">
                 <h1 role="heading">SHARIS MADE IT EASY!</h1>
             </div>
 
-            <div class="col s12 m6 l3" aria-level="2">
+            <div class="col s12 m6 l3" aria-level="2" tabindex="2">
                 <div class="card hoverable">
                     <div class="card-content center">
                         <span class="card-title"><i class="material-icons large">payment</i></span>
@@ -53,7 +84,7 @@
     </div>
     <div class="parallax-container" aria-level="3">
         <div class="parallax">
-            <img src="images/phone_3.jpg">
+            <img src="images/phone_3.jpg" alt="Chique contratando su viaje desde el smartphone">
         </div>
     </div>
 
@@ -79,29 +110,31 @@
     <div class="row center" role="article" aria-level="5">
         <div class="col s12 m8 offset-m2">
             <h1 role="heading">Tus datos: </h1>
-            <%  if(user == null){
-                user = {}
-                user._id = "???";
-                user.local = {
-                    email: "????",
-                    password: "???"
-                };
-            } else { %>
-            <h1 role="heading">Cerrrar sesión</h1>
-            <%- link_to('Cerrar sesión', '/logout', {Class: 'btn'}) %>
-
-            <% } %>
+            
             <br>
 
-            <strong>id</strong>: <%= user._id %><br>
-            <strong>email</strong>: <%= user.local.email %><br>
-            <strong>password</strong>: <%= user.local.password %>
+            <strong>id</strong>: ???<br>
+            <strong>email</strong>: ????<br>
+            <strong>password</strong>: ???
 
             <br>
-            <span>Mensaje del servidor al registrarte: <%= messageSingup %></span>
+            <span>Mensaje del servidor al registrarte: </span>
         </div>
     </div>
 </main>
 
-<% include partials/footer %>
-<% include partials/scripts %>
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container center grey-text">
+            © 2016 <a role="link" class="white-text link-footer" href="http://danielramosacosta.github.io/">Daniel Ramos</a> <a role="link" class="white-text link-footer" href="http://rafaherrero.github.io/">Rafael Herrero</a>
+
+        </div>
+    </div>
+</footer>
+
+    <script type='text/javascript' src='/vendor/jquery/dist/jquery.js' charset='utf-8' ></script>
+    <script type='text/javascript' src='/vendor/Materialize/dist/js/materialize.js' charset='utf-8' ></script>
+    <script type='text/javascript' src='/javascripts/material-config.js' charset='utf-8' ></script>
+</body>
+</html>
+

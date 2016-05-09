@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Sharis</title>
+    <link rel='stylesheet' href='/vendor/Materialize/dist/css/materialize.css' type='text/css' charset='utf-8' />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons' type='text/css' charset='utf-8' />
+
+    <link rel='stylesheet' href='/stylesheets/style.css' type='text/css' charset='utf-8' />
+
+    
+        <link rel='stylesheet' href='/stylesheets/inicioSesion.css' type='text/css' charset='utf-8' />
+    
+</head>
+<body>
+
+<nav class="navbar-fixed">
+    <div class="nav-wrapper z-depth-5 hoverable">
+        <a href="/" class="brand-logo center"><img src="images/Logo_Sharis_grande.svg"></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            
+                <li><a href="/login">Iniciar Sesión</a></li>
+            
+            <li><a href="/about">About</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/login">Iniciar Sesión</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+<div id="inicio_sesion">
+    <div class="row center">
+        <div class="col s12 center" role="main">
+            <h1>Iniciar sesión</h1>
+            
+            <form action='/login' method='post' enctype='application/x-www-form-urlencoded' >
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="input-field col s12 ">
+                            <input class='validate' required='' aria-required='true' pattern='^[A-Za-z0-9](([_.-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([.-]?[a-zA-Z0-9]+)*).([A-Za-z]{2,})$' id='email' value='' type='email' name='email' />
+                            <label data-error='Formato de correo erróneo' data-success='Válido' for='email' >Email</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input class='validate' required='' aria-required='true' minlength='10' id='password' value='' type='password' name='password' />
+                            <label data-error='Contraseña mínimo de 10 carácteres' data-success='Válido' for='password' >Password</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input class='btn' type='submit' value='Iniciar Sesión' />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</main>
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container center grey-text">
+            © 2016 <a role="link" class="white-text link-footer" href="http://danielramosacosta.github.io/">Daniel Ramos</a> <a role="link" class="white-text link-footer" href="http://rafaherrero.github.io/">Rafael Herrero</a>
+
+        </div>
+    </div>
+</footer>
+
+    <script type='text/javascript' src='/vendor/jquery/dist/jquery.js' charset='utf-8' ></script>
+    <script type='text/javascript' src='/vendor/Materialize/dist/js/materialize.js' charset='utf-8' ></script>
+    <script type='text/javascript' src='/javascripts/material-config.js' charset='utf-8' ></script>
+</body>
+</html>
+
