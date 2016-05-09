@@ -1,7 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('../db/models/user');
+// var User = require('../db/models/user');
 
-module.exports = function(passport) {
+module.exports = function(passport) {/*
     // se usa para serializar los usuarios para la sesión (el módulo de express)
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -74,5 +74,5 @@ module.exports = function(passport) {
             });
 
         }
-    ));
+    ));*/
 };

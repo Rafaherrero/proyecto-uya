@@ -2,14 +2,13 @@
     'use strict';
     const express      = require('express'),
           logger       = require('morgan'),
-          ejs          = require('ejs'),
-          mongoose     = require('mongoose'),
           path         = require('path'),
           bodyParser   = require('body-parser'),
           cookieParser = require('cookie-parser'),
           passport     = require('passport'),
           session      = require('express-session'),
-          flash        = require('connect-flash');
+          flash        = require('connect-flash'),
+          sequelize    = require('sequelize');
 
     let app = express();
 
@@ -18,11 +17,10 @@
     app.locals.ENV = env;
     app.locals.ENV_DEVELOPMENT = (env === 'development');
 
-    // Cargar la configuración de mongoose
     var configDB = require('./config/database.js');
 
-    // Conectarse a mongo
-    mongoose.connect(configDB.url);
+    // Cargar la configuración de mongoose
+    var db = new sequelize('sharis', configDB.username, configDB.password);
 
     // Usamos cookieParser para guardar el inicio de sesión
     app.use(cookieParser());
@@ -57,15 +55,13 @@
     // Cargar helpers de EJS. Documentación: https://github.com/tanema/express-helpers/wiki
     require('express-helpers')(app);
 
-    // Motor de las vistas, que podría ser Jade, Mustache. Pero en la práctica vamos
-    // A usar EJS (EmbeddedJS)
-    /*app.set('view engine', 'ejs');*/
-
     // Establecer el modo del logger, TODO: mirar el modo producción
     app.use(logger('dev'));
 
     require('./config/passport')(passport);
-    require('./routes/routes.js')(app, passport); //Cargar todas las rutas
+
+    // Cargar las routas, le pasamos la aplicación, la base de datos y passport
+    require('./routes/routes.js')(app, db, passport);
 
     // Usar el middleware de node-sass, para que compile en vivo y en directo
     app.use(require('node-sass-middleware')({

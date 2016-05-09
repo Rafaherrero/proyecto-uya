@@ -1,5 +1,6 @@
 (() => {
     module.exports = {
-        url: '0.0.0.0'
-    };
+        username: 'root',
+        password: 'uya1234'
+    }
 })();
