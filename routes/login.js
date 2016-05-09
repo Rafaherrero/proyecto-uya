@@ -12,6 +12,7 @@
                     title: 'Sharis',
                     user: req.user,
                     mesageLogin: req.flash('loginMessage'),
+                    path: 'login'
                 });
             }
         });

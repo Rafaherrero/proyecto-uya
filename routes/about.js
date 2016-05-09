@@ -6,7 +6,8 @@
     router.get('/', (req, res) => {
         res.render('about', {
             title: 'Sharis',
-            user: req.user
+            user: req.user,
+            path: 'about'
         });
     });
 

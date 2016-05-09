@@ -7,7 +7,8 @@
         res.render('index', {
             title: 'Sharis',
             user: req.user,
-            messageSingup: req.flash('signupMessage')
+            messageSingup: req.flash('signupMessage'),
+            path: 'index'
         });
     });
 

@@ -4,6 +4,8 @@ $colorflojo: #5d4037;
 $colorflojito: #6d4c41;
 $colorfondo: #efebe9;
 
+$tam-peq: 600px;
+
 body {
   background-color: $colorfondo;
   display: flex;
@@ -17,6 +19,17 @@ main {
 
 .nav-wrapper {
   background-color: $colorfuerte;
+  img {
+    max-height: 55px;
+    margin-top: 5px;
+    @media screen and (max-width: $tam-peq) {
+      max-height: 40px;
+      margin-top: 10px;
+    }
+  }
+  .button-collapse {
+    margin-left: 10px;
+  }
 }
 
 .page-footer {
@@ -33,12 +46,3 @@ main {
 	text-decoration: none;
 }
 
-#inicio_sesion{
-	background: url('../images/Fondo_Inicio_Sesion.jpg');
-	background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  height: 88.5vh;
-  justify-content: center;
-  margin-bottom: 0 !important;
-}

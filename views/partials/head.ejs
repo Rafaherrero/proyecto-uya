@@ -9,5 +9,9 @@
     <%- css_tag('https://fonts.googleapis.com/icon?family=Material+Icons') %>
 
     <%- css_tag('/stylesheets/style.css') %>
+
+    <% if(path === 'login') { %>
+        <%- css_tag('/stylesheets/inicioSesion.css') %>
+    <% } %>
 </head>
 <body>
