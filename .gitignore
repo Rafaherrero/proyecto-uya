@@ -37,6 +37,3 @@ node_modules
 
 # Dependencias front-end
 public/vendor
-
-# Cualquier de public, ya que usamos sass
-public/stylesheets/*.css
