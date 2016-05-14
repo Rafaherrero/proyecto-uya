@@ -8,26 +8,29 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema usuario_schema
+-- Schema sharis
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema usuario_schema
+-- Schema sharis
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `usuario_schema` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci ;
-USE `usuario_schema` ;
+CREATE SCHEMA IF NOT EXISTS `sharis` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci ;
+USE `sharis` ;
 
 -- -----------------------------------------------------
--- Table `usuario_schema`.`usuario`
+-- Table `sharis`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `usuario_schema`.`usuario` (
-  `id` INT(10) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `nick` VARCHAR(45) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `apellidos` VARCHAR(45) NOT NULL,
-  `cumpleanos` DATE NULL,
+CREATE TABLE IF NOT EXISTS `sharis`.`usuarios` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `nick` VARCHAR(255) NOT NULL,
+  `nombre` VARCHAR(255) NOT NULL,
+  `apellidos` VARCHAR(255) NOT NULL,
+  `cumpleanos` DATETIME NULL,
   `telefono` INT(9) NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = ucs2
