@@ -19,6 +19,10 @@
                 res.status(400).send('Necesitas una contraseña para registrarte');
                 return;
             }
+            if(!req.body.nick) {
+                res.status(400).send('Necesitas un nick para registrarte');
+                return;
+            }
             if(!req.body.nombre) {
                 res.status(400).send('Necesitas un nombre para registrarte');
                 return;
@@ -34,7 +38,7 @@
                     res.send(err.message);
                     return err;
                 }
-                res.status(201).send(user);
+                res.status(201).send();
             })(req, res, next);
         }
 
@@ -50,7 +54,7 @@
                     return err;
                 }
                 req.session.authenticated = true
-                res.status(200).send(user);
+                res.status(200).send();
             })(req, res, next);
         }
 

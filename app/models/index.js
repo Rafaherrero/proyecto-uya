@@ -4,8 +4,17 @@ var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
-var sequelize = new Sequelize('sharis', 'root', 'uya1234');
 var db        = {};
+var sequelize = 0; // Se establece el valor justo un poquito más abajo
+
+if (env === 'test')
+    // En caso de estar realizando pruebas, conectarnos a una base de datos alternativa
+    sequelize = new Sequelize('test', 'root', 'uya1234', {
+        logging: false,
+    });
+else {
+    sequelize = new Sequelize('sharis', 'root', 'uya1234');
+}
 
 fs
     .readdirSync(__dirname)
@@ -27,10 +36,20 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.sequelize.sync().then(function() {
-    console.log('Conectado al servidor SQL');
+    if (env !== 'test')
+        console.log('Conectado al servidor SQL');
 }).error(function(error) {
     console.log('Error al conectar con el servidor SQL');
     console.log(error);
 })
+
+if (env === 'test') {
+    // Antes de comenzar las pruebas, hacer un drop de todas las tablas
+    for( var key in db ) {
+        if (key !== 'sequelize' && key !== 'Sequelize') {
+            db[key].destroy({where: {}});
+        }
+    }
+}
 
 module.exports = db;

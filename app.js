@@ -44,8 +44,9 @@
     // Establecer la ruta de las vistas
     app.set('views', `${__dirname}/views`);
 
-    // Establecer el modo del logger, TODO: mirar el modo producción
-    app.use(logger('dev'));
+    // Establecer el modo del logger, si estamos en pruebas no se activa
+    if (env !== 'test')
+        app.use(logger('dev'));
 
     require('./config/passport')(passport);
 

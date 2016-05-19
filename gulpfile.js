@@ -28,9 +28,9 @@
                 'app.js'
             ],
             (file) => {
-                console.log('[GLS] File changed');
+                console.log(`[GLS] ${file} changed`);
                 var promise = server.stop();
-                promise.then(function(result) {
+                promise.then(() => {
                     server.start();
                 });
             }
