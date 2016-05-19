@@ -38,18 +38,16 @@ db.Sequelize = Sequelize;
 db.sequelize.sync().then(function() {
     if (env !== 'test')
         console.log('Conectado al servidor SQL');
+    /*else {
+        for( var key in db ) {
+            if (key !== 'sequelize' && key !== 'Sequelize') {
+                db[key].destroy({where: {}});
+            }
+        }
+    }*/
 }).error(function(error) {
     console.log('Error al conectar con el servidor SQL');
     console.log(error);
 })
-
-if (env === 'test') {
-    // Antes de comenzar las pruebas, hacer un drop de todas las tablas
-    for( var key in db ) {
-        if (key !== 'sequelize' && key !== 'Sequelize') {
-            db[key].destroy({where: {}});
-        }
-    }
-}
 
 module.exports = db;

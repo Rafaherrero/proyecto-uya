@@ -58,6 +58,22 @@
             })(req, res, next);
         }
 
+        login(req, res, next) {
+            if(req.session.authenticated) {
+                res.status(400).send('Ya has iniciado sesión');
+                return;
+            }
+            this.passport.authenticate('local-login', function(err, user) {
+                if(err) {
+                    res.status(err.status || 500);
+                    res.send(err.message);
+                    return err;
+                }
+                req.session.authenticated = true
+                res.status(200).send();
+            })(req, res, next);
+        }
+
         logout(req, res, next) {
             if(!req.session.authenticated) {
                 res.status(400).send('No has iniciado sesión, asi que no puedes cerrarla');

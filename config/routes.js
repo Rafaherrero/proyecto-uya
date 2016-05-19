@@ -5,7 +5,7 @@
         var UsersController = controller('users', passport);
 
         app.post('/signup', UsersController.create.bind(UsersController));
-        app.post('/login', UsersController.show.bind(UsersController));
+        app.post('/login', UsersController.login.bind(UsersController));
         app.post('/logout', UsersController.logout.bind(UsersController));
 
     };
