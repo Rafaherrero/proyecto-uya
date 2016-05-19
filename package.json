@@ -4,7 +4,6 @@
   "description": "Proyecto para la asignatura de Usabilidad y Accesibilidad",
   "main": "bin/www",
   "scripts": {
-    "test": "node_modules/.bin/mocha",
     "start": "node bin/www"
   },
   "repository": {
@@ -50,7 +49,6 @@
     "sequelize": "^3.23.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-jscs": "^3.0.2",
@@ -58,7 +56,5 @@
     "gulp-live-server": "0.0.29",
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.2.0",
-    "mocha": "^2.4.5",
-    "supertest": "^1.2.0"
   }
 }
