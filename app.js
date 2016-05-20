@@ -2,11 +2,10 @@
     'use strict';
     const express      = require('express'),
           logger       = require('morgan'),
-          path         = require('path'),
           bodyParser   = require('body-parser'),
           cookieParser = require('cookie-parser'),
           passport     = require('passport'),
-          session      = require('express-session')
+          session      = require('express-session');
 
     let app = express();
 
@@ -14,8 +13,6 @@
     const env = process.env.NODE_ENV || 'development';
     app.locals.ENV = env;
     app.locals.ENV_DEVELOPMENT = (env === 'development');
-
-    var configDB = require('./config/database.js');
 
     // Usamos cookieParser para guardar el inicio de sesión
     app.use(cookieParser());
@@ -45,8 +42,7 @@
     app.set('views', `${__dirname}/views`);
 
     // Establecer el modo del logger, si estamos en pruebas no se activa
-    if (env !== 'test')
-        app.use(logger('dev'));
+    app.use(logger('dev'));
 
     require('./config/passport')(passport);
 

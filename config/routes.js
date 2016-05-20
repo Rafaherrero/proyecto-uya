@@ -4,14 +4,15 @@
 
         var UsersController = controller('users', passport);
 
-        app.post('/signup', UsersController.create.bind(UsersController));
-        app.post('/login', UsersController.login.bind(UsersController));
-        app.post('/logout', UsersController.logout.bind(UsersController));
+        app.get('/users', UsersController.index.bind(UsersController));
+        app.post('/users/signup', UsersController.create.bind(UsersController));
+        app.post('/users/login', UsersController.login.bind(UsersController));
+        app.post('/users/logout', UsersController.logout.bind(UsersController));
 
     };
 
     function controller(name, param) {
-        var aux = require(`../app/controllers/${name}.js`);
-        return new aux(param);
+        const Controller = require(`../app/controllers/${name}.js`);
+        return new Controller(param);
     }
 })();

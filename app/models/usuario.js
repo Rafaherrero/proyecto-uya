@@ -1,4 +1,5 @@
-(()=>{
+(() => {
+    'use strict';
     module.exports = function(sequelize, DataTypes) {
         var Usuario = sequelize.define('usuario', {
             email: { type: DataTypes.STRING, allowNull: false },
@@ -11,5 +12,5 @@
         });
 
         return Usuario;
-    }
-})()
+    };
+})();

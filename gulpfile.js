@@ -45,11 +45,10 @@
     gulp.task('lint:jshint', () => {
         return gulp.src([
                 'gulpfile.js',
-                'public/js/**/*.js',
-                'routes/**/*.js',
-                'assets/modules/**/*.js',
-                'db/models/**/*.js',
-                'config/**/*.js'
+                'app/**/*.js',
+                'bin/www',
+                'config/**/*.js',
+                'app.js'
             ])
             .pipe(jshint('.jshintrc'))
             .pipe(jshint.reporter('jshint-stylish'));
@@ -59,10 +58,10 @@
     gulp.task('lint:jscs', () => {
         return gulp.src([
                 'gulpfile.js',
-                'public/js/**/*.js',
-                'routes/**/*.js',
-                'assets/modules/**/*.js',
-                'db/models/**/*.js'
+                'app/**/*.js',
+                'bin/www',
+                'config/**/*.js',
+                'app.js'
             ])
             .pipe(jscs())
             .pipe(jscs.reporter());

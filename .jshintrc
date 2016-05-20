@@ -91,6 +91,8 @@
         "require": false,
         "module": false,
         "$": false,
-        "_": false
+        "_": false,
+        "__dirname": false,
+        "process": false
     }        // additional predefined global variables
 }

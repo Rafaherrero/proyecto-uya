@@ -25,9 +25,9 @@
             {
                 // por defecto, local strategy usa el nombre de usuaro y la contraseña,
                 // pero nosotros usamos el email y contraseña.
-                usernameField : 'email',
-                passwordField : 'password',
-                passReqToCallback : true // nos permite devolver la petición a la callback
+                usernameField: 'email',
+                passwordField: 'password',
+                passReqToCallback: true // nos permite devolver la petición a la callback
             },
             (req, email, password, done) => {
                 // encontrar un usuario cuyo email es el mismo que el del formulario
@@ -61,22 +61,22 @@
         // INICIO DE SESIÓN
         passport.use('local-login', new LocalStrategy(
             {
-                usernameField : 'email',
-                passwordField : 'password',
-                passReqToCallback : true
+                usernameField: 'email',
+                passwordField: 'password',
+                passReqToCallback: true
             },
             (req, email, password, done) => { //callback con el email y la contraseña del formulario
                 Usuario.findOne({ where: {email: email} }).then((user) => {
                     // Si no se encontró al usuario, devolver el error
                     var err;
-                    if (!user){
+                    if (!user) {
                         err = new Error('Ese usuario no existe');
                         err.status = 404;
                         return done(err);
                     }
 
                     // Si existe el usuario, pero la contraseña está mal, devolver error
-                    if (user.password !== password){
+                    if (user.password !== password) {
                         err = new Error('La contraseña es errónea');
                         err.status = 400;
                         return done(err);

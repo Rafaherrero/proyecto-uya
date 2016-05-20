@@ -55,6 +55,6 @@
     "gulp-jshint": "^2.0.0",
     "gulp-live-server": "0.0.29",
     "jshint": "^2.9.2",
-    "jshint-stylish": "^2.2.0",
+    "jshint-stylish": "^2.2.0"
   }
 }
