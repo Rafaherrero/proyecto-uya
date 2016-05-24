@@ -15,7 +15,7 @@ describe('User', () => {
   describe('#create', () => {
     describe('si se le pasa correctamente el usuario', () => {
       before((done) => {
-        models.usuario.destroy({
+        models.Usuario.destroy({
           where: {},
           truncate: true
         }).then(() => {
@@ -44,7 +44,7 @@ describe('User', () => {
             done(err)
             return
           }
-          expect(res.body.error).to.equal(undefined)
+          expect(res.error.text).to.equal(undefined)
           done()
         })
       })
@@ -198,17 +198,6 @@ describe('User', () => {
 
   describe('#login', () => {
     describe('si se le pasa correctamente el usuario', () => {
-      before((done) => {
-        models.usuario.create({
-          email: 'pepe@pepe.com',
-          password: 'pepe',
-          nick: 'Pepito123',
-          nombre: 'Pepe',
-          apellidos: 'García'
-        }).then(() => {
-          done()
-        })
-      })
       it('debe loginear al usuario', (done) => {
         let user = {
           email: 'pepe@pepe.com',
@@ -229,5 +218,114 @@ describe('User', () => {
         })
       })
     })
+    describe('si ya se ha iniciado sesión', () => {
+      it('se debe enviar un error', (done) => {
+        let user = {
+          email: 'pepe@pepe.com',
+          password: 'pepe'
+        }
+
+        agent
+        .post('/users/login')
+        .send(user)
+        .expect(400)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.error.text).to.equal('Ya has iniciado sesión')
+          done()
+        })
+      })
+    })
   })
+
+  describe('#logout', () => {
+    describe('si se tiene una sesión iniciada', () => {
+      it('se debe cerrar sesión', (done) => {
+        agent
+        .post('/users/logout')
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          done()
+        })
+      })
+    })
+    describe('si ya se había iniciado sesión', () => {
+      it('se debe enviar un error', (done) => {
+        agent
+        .post('/users/logout')
+        .send()
+        .expect(400)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.error.text).to.equal('No has iniciado sesión, asi que no puedes cerrarla')
+          done()
+        })
+      })
+    })
+  })
+
+  describe('#index', () => {
+    describe('al pedir todos los usuarios', () => {
+      it('se debe devolver un array con todos', (done) => {
+        let resultado = [
+          {
+            nick: 'Pepito123',
+            nombre: 'Pepe',
+            apellidos: 'García',
+            email: 'pepe@pepe.com'
+          }
+        ]
+
+        agent
+        .get('/users')
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.body).to.deep.equal(resultado)
+          done()
+        })
+      })
+    })
+  })
+  /*
+  TODO: añadir las rutas
+  describe('#show', () => {
+    describe('al pedir un usuario concreto', () => {
+      it('se deben enviar sus datos', (done) => {
+        agent
+        .get('/users/Pepito123')
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          console.log(res.body)
+          expect(res.body).to.deep.equal('asd')
+          done()
+        })
+      })
+    })
+  })*/
 })

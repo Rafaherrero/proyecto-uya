@@ -2,7 +2,7 @@
   'use strict'
 
   module.exports = function (sequelize, DataTypes) {
-    var Usuario = sequelize.define('usuario', {
+    var Usuario = sequelize.define('Usuario', {
       email: {
         type: DataTypes.STRING,
         allowNull: false
@@ -29,8 +29,13 @@
       telefono: {
         type: DataTypes.INTEGER
       }
+    }, {
+      classMethods: {
+        associate: function (models) {
+          // associations can be defined here
+        }
+      }
     })
-
     return Usuario
   }
 })()

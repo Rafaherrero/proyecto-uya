@@ -10,11 +10,11 @@
 
   if (env === 'test') {
     // En caso de estar realizando pruebas, conectarnos a una base de datos alternativa
-    sequelize = new Sequelize('test', 'root', 'uya1234', {
+    sequelize = new Sequelize(`sharis_${env}`, 'root', 'uya1234', {
       logging: false
     })
   } else {
-    sequelize = new Sequelize('sharis', 'root', 'uya1234')
+    sequelize = new Sequelize(`sharis_${env}`, 'root', 'uya1234')
   }
 
   fs

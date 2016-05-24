@@ -4,18 +4,29 @@
   class UsersController {
     constructor (passport) {
       this.passport = passport
-      this.Usuario = require('../models/index').usuario
+      this.Usuario = require('../models/index').Usuario
     }
 
     index (req, res) {
       this.Usuario.findAll({
         attributes: [
+          'nick',
           'nombre',
           'apellidos',
           'email'
         ]
       }).then((users) => {
         res.send(users)
+      })
+    }
+
+    show (req, res) {
+      this.Usuario.findOne({where: {nick: req.params.nick}}).then((user) => {
+        if (user === null) {
+          res.status(404).send('Ese usuario no existe')
+        } else {
+          res.status(200).send(user)
+        }
       })
     }
 
@@ -45,7 +56,7 @@
         return
       }
 
-      this.passport.authenticate('local-signup', function (err) {
+      this.passport.authenticate('local-signup', (err) => {
         if (err) {
           res.status(err.status || 500)
           res.send(err.message)
@@ -60,14 +71,16 @@
         res.status(400).send('Ya has iniciado sesión')
         return
       }
-      this.passport.authenticate('local-login', function (err) {
+      this.passport.authenticate('local-login', (err) => {
         if (err) {
           res.status(err.status || 500)
           res.send(err.message)
           return err
         }
-        req.session.authenticated = true
-        res.status(200).send('Has iniciado sesión satisfactoriamente.')
+        this.Usuario.findOne({where: {email: req.body.email}}).then((user) => {
+          req.session.authenticated = user.nick
+          res.status(200).send('Has iniciado sesión satisfactoriamente.')
+        })
       })(req, res, next)
     }
 
