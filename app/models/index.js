@@ -1,37 +1,49 @@
 (() => {
-    'use strict';
+  'use strict'
 
-    var fs        = require('fs');
-    var path      = require('path');
-    var Sequelize = require('sequelize'); // Paquete manejador de la base de datos
-    var sequelize = new Sequelize('sharis', 'root', 'uya1234'); // Insancia de conexióna a la base de datos
-    var db        = {};  // Variables que vamos a exportar (la librería y los modelos)
+  var fs = require('fs')
+  var path = require('path')
+  var Sequelize = require('sequelize')
+  var env = process.env.NODE_ENV || 'development'
+  var db = {}
+  var sequelize = 0 // Se establece el valor justo un poquito más abajo
 
-    fs
-        .readdirSync(__dirname)
-        .filter(function(file) {
-            return (file.indexOf('.') !== 0) && (file !== 'index.js') && (/.*\.js/.test(file));
-        })
-        .forEach(function(file) {
-            var model = sequelize.import(path.join(__dirname, file));
-            db[model.name] = model;
-        });
+  if (env === 'test') {
+    // En caso de estar realizando pruebas, conectarnos a una base de datos alternativa
+    sequelize = new Sequelize('test', 'root', 'uya1234', {
+      logging: false
+    })
+  } else {
+    sequelize = new Sequelize('sharis', 'root', 'uya1234')
+  }
 
-    Object.keys(db).forEach(function(modelName) {
-        if ('associate' in db[modelName]) {
-            db[modelName].associate(db);
-        }
-    });
+  fs
+    .readdirSync(__dirname)
+    .filter(function (file) {
+      return (file.indexOf('.') !== 0) && (file !== 'index.js') && (/.*\.js/.test(file))
+    })
+    .forEach(function (file) {
+      var model = sequelize.import(path.join(__dirname, file))
+      db[model.name] = model
+    })
 
-    db.sequelize = sequelize;
-    db.Sequelize = Sequelize;
+  Object.keys(db).forEach(function (modelName) {
+    if ('associate' in db[modelName]) {
+      db[modelName].associate(db)
+    }
+  })
 
-    db.sequelize.sync().then(function() {
-        console.log('Conectado al servidor SQL');
-    }).error(function(error) {
-        console.log('Error al conectar con el servidor SQL');
-        console.log(error);
-    });
+  db.sequelize = sequelize
+  db.Sequelize = Sequelize
 
-    module.exports = db;
-})();
+  db.sequelize.sync().then(function () {
+    if (env !== 'test') {
+      console.log('Conectado al servidor SQL')
+    }
+  }).error(function (error) {
+    console.log('Error al conectar con el servidor SQL')
+    console.log(error)
+  })
+
+  module.exports = db
+})()

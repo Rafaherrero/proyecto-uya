@@ -1,9 +1,9 @@
 (() => {
-    'use strict';
+  'use strict'
 
-    module.exports = {
-        username: 'root',
-        password: 'uya1234',
-        database: 'sharis'
-    };
-})();
+  module.exports = {
+    username: 'root',
+    password: 'uya1234',
+    database: 'sharis'
+  }
+})()

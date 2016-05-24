@@ -1,11 +1,11 @@
+/* global $ */
+
 ((exports) => {
-    'use strict';
+  'use strict'
 
-    $(".button-collapse").sideNav();
+  $('.button-collapse').sideNav()
 
-    
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-        
+  $(document).ready(function () {
+    $('.parallax').parallax()
+  })
 })(this)
