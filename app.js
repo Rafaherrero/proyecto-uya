@@ -38,8 +38,12 @@
   // Para guardar las sesiones, usa el express-session
   app.use(passport.session())
 
-  // Establecer la ruta de las vistas
-  app.set('views', `${__dirname}/views`)
+  // Habilitar el CORS
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    next()
+  })
 
   // Establecer el modo del logger, si estamos en pruebas no se activa
   if (env !== 'test') {
