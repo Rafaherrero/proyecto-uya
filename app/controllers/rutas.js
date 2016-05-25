@@ -1,16 +1,60 @@
 (() => {
   'use strict'
 
-  class UsersController {
+  class RutasController {
     constructor () {
       var models = require('../models/index')
       this.Ruta = models.Ruta
       this.Usuario = models.Usuario
+      this.Ciudad = models.Ciudad
     }
 
     index (req, res) {
-      this.Ruta.findAll({}).then((rutas) => {
-        res.send('Conectado')
+      if (!req.body.origen) {
+        res.status(400).send('Tienes que decirme desde donde quieres ir')
+        return
+      }
+      if (!req.body.destino) {
+        res.status(400).send('Tienes que decirme hacia donde quieres ir')
+        return
+      }
+
+      this.Ruta.findAll({where: {
+        origen: req.body.origen,
+        destino: req.body.destino
+      }}).then((rutas) => {
+        if (rutas.length === 0) {
+          res.status(404).send('No se ha encontrado ningún usuario con esos parámetros')
+        }
+        let promises = []
+        rutas.forEach((ruta) => {
+          promises.push(this.Usuario.findById(ruta.id, {
+            attributes: [
+              'nick'
+            ]
+          }))
+        })
+        Promise.all(promises).then((usuarios) => {
+          res.send(usuarios)
+        })
+      })
+    }
+
+    show (req, res) {
+      this.Ruta.findById(req.params.id).then((ruta) => {
+        if (ruta == null) {
+          res.status(404).send('Esa ruta no existe')
+          return
+        }
+        let p1 = this.Ciudad.findById(ruta.origen)
+        let p2 = this.Ciudad.findById(ruta.destino)
+
+        Promise.all([p1, p2]).then((quetengo) => {
+          res.json({ propietario: ruta.propietario, origen: quetengo[0].nombre, destino: quetengo[1].nombre })
+        })
+      }).catch((err) => {
+        console.log(err)
+        return err
       })
     }
 
@@ -54,5 +98,5 @@
     }
   }
 
-  module.exports = UsersController
+  module.exports = RutasController
 })()

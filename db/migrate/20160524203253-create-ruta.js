@@ -28,6 +28,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Ruta');
+    return queryInterface.dropTable('Rutas');
   }
 };
