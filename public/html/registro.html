@@ -56,19 +56,19 @@
                         <div class="row">
                             <div class="input-field col s12 m6">
                                 <i class="fa fa-user prefix" aria-hidden="true"></i>
-                                <input aria-required='true' class='validate' id='nombre' name='nombre' required type='text' value=''>
-                                <label data-error='Formato del nombre erróneo' data-success='Válido' for='nombre'>Nombre</label>
+                                <input aria-required='true' class='validate' id='nombre' name='nombre' required type='text' value='' pattern="..+">
+                                <label data-error='Tu nombre tiene que tener al menos 2 carácteres' data-success='Válido' for='nombre'>Nombre</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <input aria-required='true' class='validate' id='apellidos' name='apellidos' required type='text' value=''>
-                                <label data-error='Formato de los apellidos erróneo' data-success='Válido' for='apellidos'>Apellidos</label>
+                                <input aria-required='true' class='validate' id='apellidos' name='apellidos' required type='text' value='' pattern="..+">
+                                <label data-error='Tus apellidos tiene que tener al menos 2 carácteres' data-success='Válido' for='apellidos'>Apellidos</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="fa fa-user-secret prefix" aria-hidden="true"></i>
-                                <input aria-required='true' class='validate' id='nick' name='nick' required type='text' value=''>
-                                <label data-error='Formato del nick erróneo' data-success='Válido' for='nick'>Nick</label>
+                                <input aria-required='true' class='validate' id='nick' name='nick' required type='text' value='' pattern="\w\w\w\w+">
+                                <label data-error='Nick de mínimo 4 carácteres y sin espacios ni símbolos' data-success='Válido' for='nick'>Nick</label>
                             </div>
                         </div>
                         <div class="row">
@@ -81,7 +81,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="fa fa-key prefix" aria-hidden="true"></i>
-                                <input aria-required='true' class='validate' id='password' name='password' required type='password' value=''>
+                                <input aria-required='true' class='validate' id='password' name='password' required type='password' value='' pattern="..........+">
                                 <label data-error='Contraseña mínimo de 10 carácteres' data-success='Válido' for='password'>Contraseña</label>
                             </div>
                         </div>
@@ -129,11 +129,9 @@
             </div>
         </div>
     </footer>
-    <script charset='utf-8' src='../vendor/jquery/dist/jquery.js' type='text/javascript'>
-    </script>
-    <script charset='utf-8' src='../vendor/Materialize/dist/js/materialize.js' type='text/javascript'>
-    </script>
-    <script charset='utf-8' src='../javascripts/material-config.js' type='text/javascript'>
-    </script>
+    <script charset='utf-8' src='../vendor/jquery/dist/jquery.js' type='text/javascript'></script>
+    <script charset='utf-8' src='../vendor/Materialize/dist/js/materialize.js' type='text/javascript'></script>
+    <script charset='utf-8' src='../javascripts/material-config.js' type='text/javascript'></script>
+    <script charset='utf-8' src='../javascripts/registro.js' type='text/javascript'></script>
 </body>
 </html>
