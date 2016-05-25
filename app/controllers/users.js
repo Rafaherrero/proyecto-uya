@@ -103,11 +103,7 @@
     validar (req, res) {
       let usuario = req.body
       this.validaUsuario(usuario).then((validacion) => {
-        if (validacion.todoBien) {
-          res.status(200).send(validacion)
-        } else {
-          res.status(400).send(validacion)
-        }
+        res.status(200).send(validacion)
       })
     }
 
