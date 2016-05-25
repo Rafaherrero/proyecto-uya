@@ -5,6 +5,12 @@
     constructor (passport) {
       this.passport = passport
       this.Usuario = require('../models/index').Usuario
+
+      this.nombreRegex = /..+/
+      this.apellidoRegex = /..+/
+      this.nickRegex = /\w\w\w\w+/
+      this.emailRegex = /^[A-Za-z0-9](([_.-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([.-]?[a-zA-Z0-9]+)*).([A-Za-z]{2,})$/
+      this.passRegex = /..........+/
     }
 
     index (req, res) {
@@ -92,6 +98,60 @@
       req.logout()
       req.session.authenticated = null
       res.status(200).send('Has cerrado sesión satisfactoriamente.')
+    }
+
+    validar (req, res) {
+      let usuario = req.body
+      let validacion = this.validaUsuario(usuario)
+
+      if (validacion.todoBien) {
+        res.status(200).send(validacion)
+      } else {
+        res.status(400).send(validacion)
+      }
+    }
+
+    validaUsuario (usuario) {
+      let validated = {
+        todoBien: true
+      }
+
+      if (this.emailRegex.test(usuario.email)) {
+        validated.email = true
+      } else {
+        validated.email = false
+        validated.todoBien = false
+      }
+
+      if (this.passRegex.test(usuario.password)) {
+        validated.password = true
+      } else {
+        validated.password = false
+        validated.todoBien = false
+      }
+
+      if (this.nickRegex.test(usuario.nick)) {
+        validated.nick = true
+      } else {
+        validated.nick = false
+        validated.todoBien = false
+      }
+
+      if (this.nombreRegex.test(usuario.nombre)) {
+        validated.nombre = true
+      } else {
+        validated.nombre = false
+        validated.todoBien = false
+      }
+
+      if (this.apellidoRegex.test(usuario.apellidos)) {
+        validated.apellidos = true
+      } else {
+        validated.apellidos = false
+        validated.todoBien = false
+      }
+
+      return validated
     }
   }
 

@@ -306,14 +306,85 @@ describe('User', () => {
       })
     })
   })
-  /*
-  TODO: añadir las rutas
-  describe('#show', () => {
-    describe('al pedir un usuario concreto', () => {
-      it('se deben enviar sus datos', (done) => {
+
+  describe('#validar', () => {
+    describe('al enviar un usuario malformado', () => {
+      it('se debe validar si el formato es correcto', (done) => {
+        let user = {
+          email: 'pepepepe.com',
+          password: 'pe',
+          nick: 'Pepi3',
+          nombre: 'P',
+          apellidos: 'García'
+        }
+
         agent
-        .get('/users/Pepito123')
-        .send()
+        .post('/users/validar')
+        .send(user)
+        .expect(400)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.body).to.deep.equal({
+            todoBien: false,
+            email: false,
+            password: false,
+            nick: true,
+            nombre: false,
+            apellidos: true
+          })
+          done()
+        })
+      })
+    })
+    describe('al enviar un usuario malformado', () => {
+      it('se debe validar si el formato es correcto', (done) => {
+        let user = {
+          email: 'pepe@pepe.com',
+          password: 'pe',
+          nick: 'Pepi3',
+          nombre: 'P',
+          apellidos: 'García'
+        }
+
+        agent
+        .post('/users/validar')
+        .send(user)
+        .expect(400)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.body).to.deep.equal({
+            todoBien: false,
+            email: true,
+            password: false,
+            nick: true,
+            nombre: false,
+            apellidos: true
+          })
+          done()
+        })
+      })
+    })
+    describe('al enviar un usuario malformado', () => {
+      it('se debe validar si el formato es correcto', (done) => {
+        let user = {
+          email: 'pepe@pepe.com',
+          password: 'pepepepepepe',
+          nick: 'Pepito123',
+          nombre: 'Pepe',
+          apellidos: 'García'
+        }
+
+        agent
+        .post('/users/validar')
+        .send(user)
         .expect(200)
         .end((err, res) => {
           if (err) {
@@ -321,11 +392,17 @@ describe('User', () => {
             done(err)
             return
           }
-          console.log(res.body)
-          expect(res.body).to.deep.equal('asd')
+          expect(res.body).to.deep.equal({
+            todoBien: true,
+            email: true,
+            password: true,
+            nick: true,
+            nombre: true,
+            apellidos: true
+          })
           done()
         })
       })
     })
-  })*/
+  })
 })

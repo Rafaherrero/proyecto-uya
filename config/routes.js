@@ -16,6 +16,7 @@
     get(app, '/rutas/:id', RutasController, 'show') // Crear una ruta para el usuario 'nick'
     get(app, '/rutas', RutasController, 'index') // Obtener las rutas que coinciden con la búsqueda
     get(app, '/ciudades', CiudadesController, 'index')  // Obtener la lista de ciuades
+    post(app, '/users/validar', UsersController, 'validar')  // Validar el formato de un usuario
   }
 
   function controller (name, param) {
