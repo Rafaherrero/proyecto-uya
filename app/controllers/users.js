@@ -102,56 +102,66 @@
 
     validar (req, res) {
       let usuario = req.body
-      let validacion = this.validaUsuario(usuario)
-
-      if (validacion.todoBien) {
-        res.status(200).send(validacion)
-      } else {
-        res.status(400).send(validacion)
-      }
+      this.validaUsuario(usuario).then((validacion) => {
+        if (validacion.todoBien) {
+          res.status(200).send(validacion)
+        } else {
+          res.status(400).send(validacion)
+        }
+      })
     }
 
     validaUsuario (usuario) {
       let validated = {
-        todoBien: true
+        todoBien: true,
+        nombre: true,
+        apellidos: true,
+        nick: true,
+        email: true,
+        password: true
       }
 
-      if (this.emailRegex.test(usuario.email)) {
-        validated.email = true
-      } else {
+      if (!this.emailRegex.test(usuario.email)) {
         validated.email = false
         validated.todoBien = false
       }
 
-      if (this.passRegex.test(usuario.password)) {
-        validated.password = true
-      } else {
+      if (!this.passRegex.test(usuario.password)) {
         validated.password = false
         validated.todoBien = false
       }
 
-      if (this.nickRegex.test(usuario.nick)) {
-        validated.nick = true
-      } else {
+      if (!this.nickRegex.test(usuario.nick)) {
         validated.nick = false
         validated.todoBien = false
       }
 
-      if (this.nombreRegex.test(usuario.nombre)) {
-        validated.nombre = true
-      } else {
+      if (!this.nombreRegex.test(usuario.nombre)) {
         validated.nombre = false
         validated.todoBien = false
       }
 
-      if (this.apellidoRegex.test(usuario.apellidos)) {
-        validated.apellidos = true
-      } else {
+      if (!this.apellidoRegex.test(usuario.apellidos)) {
         validated.apellidos = false
         validated.todoBien = false
       }
 
-      return validated
+      let p1 = this.Usuario.findOne({where: {nick: usuario.nick}})
+      let p2 = this.Usuario.findOne({where: {email: usuario.email}})
+
+      return Promise.all([p1, p2]).then((res) => {
+        if (res[0] != null) {
+          validated.nick = false
+          validated.todoBien = false
+        }
+
+        if (res[1] != null) {
+          validated.email = false
+          validated.todoBien = false
+        }
+
+        return validated
+      })
     }
   }
 

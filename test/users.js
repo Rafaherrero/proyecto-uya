@@ -340,10 +340,42 @@ describe('User', () => {
         })
       })
     })
-    describe('al enviar un usuario malformado', () => {
+    describe('al enviar un usuario con un correo ya existente', () => {
       it('se debe validar si el formato es correcto', (done) => {
         let user = {
           email: 'pepe@pepe.com',
+          password: 'pe',
+          nick: 'Pepi3',
+          nombre: 'P',
+          apellidos: 'García'
+        }
+
+        agent
+        .post('/users/validar')
+        .send(user)
+        .expect(400)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.body).to.deep.equal({
+            todoBien: false,
+            email: false,
+            password: false,
+            nick: true,
+            nombre: false,
+            apellidos: true
+          })
+          done()
+        })
+      })
+    })
+    describe('al enviar un usuario malformado', () => {
+      it('se debe validar si el formato es correcto', (done) => {
+        let user = {
+          email: 'otro@otro.com',
           password: 'pe',
           nick: 'Pepi3',
           nombre: 'P',
@@ -375,9 +407,9 @@ describe('User', () => {
     describe('al enviar un usuario malformado', () => {
       it('se debe validar si el formato es correcto', (done) => {
         let user = {
-          email: 'pepe@pepe.com',
+          email: 'otro@otro.com',
           password: 'pepepepepepe',
-          nick: 'Pepito123',
+          nick: 'Otro123456',
           nombre: 'Pepe',
           apellidos: 'García'
         }
