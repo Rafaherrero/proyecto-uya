@@ -163,7 +163,7 @@
     }
 
     whoami (req, res) {
-      res.json(req.session.authenticated)
+      res.send({info: req.session.authenticated})
     }
   }
 
