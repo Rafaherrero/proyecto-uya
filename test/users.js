@@ -450,7 +450,7 @@ describe('User', () => {
             done(err)
             return
           }
-          expect(res.body).to.equal(null)
+          expect(res.body).to.deep.equal({info: null})
           done()
         })
       })
@@ -489,7 +489,7 @@ describe('User', () => {
             done(err)
             return
           }
-          expect(res.body).to.deep.equal('Pepito123')
+          expect(res.body).to.deep.equal({info: 'Pepito123'})
           done()
         })
       })
