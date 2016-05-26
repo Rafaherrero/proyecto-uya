@@ -1,6 +1,8 @@
 /* global $ */
 
 ((exports) => {
+  'use strict'
+
   const IP_SERVIDOR = '192.168.1.198'
 
   const defaultMsg = {
@@ -11,7 +13,6 @@
     password: 'Contraseña mínimo de 10 carácteres'
   }
 
-  'use strict'
   $(() => {
     // Comprobar que el formato es válido
 
