@@ -6,6 +6,7 @@
   const cookieParser = require('cookie-parser')
   const passport = require('passport')
   const session = require('express-session')
+  const cors = require('cors')
 
   let app = express()
 
@@ -19,6 +20,10 @@
 
   // Configurar la sesión de express
   app.use(session({
+    cookie: {
+      maxAge: 36000000,
+      httpOnly: false // <- set httpOnly to false
+    },
     secret: 'rafadaniproyecto', // Clave de seguridad para firmar las cookies
     resave: false, // para no guardar la cookie en session store, crea condiciones de carrera
     saveUninitialized: true // crea una sesión no inicializada en el navegador
@@ -39,11 +44,8 @@
   app.use(passport.session())
 
   // Habilitar el CORS
-  app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-    next()
-  })
+  // IMPORTANTE: Aquí hay que poner la dirección del servidor de front-end
+  app.use(cors({origin: 'http://192.168.1.198:3000', credentials: true}))
 
   // Establecer el modo del logger, si estamos en pruebas no se activa
   if (env !== 'test') {
