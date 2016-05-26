@@ -11,6 +11,7 @@
     post(app, '/users/login', UsersController, 'login') // Iniciar sesión
     post(app, '/users/logout', UsersController, 'logout') // Cerrar sesión
 
+    get(app, '/users/whoami', UsersController, 'whoami') // Obtener la información del usuario actual
     get(app, '/users/:nick', UsersController, 'show') // Obtener la información del usuario 'nick'
     post(app, '/users/:nick/rutas', RutasController, 'create') // Crear una ruta para el usuario 'nick'
     get(app, '/rutas/:id', RutasController, 'show') // Crear una ruta para el usuario 'nick'

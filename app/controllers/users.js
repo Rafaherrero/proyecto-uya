@@ -26,7 +26,7 @@
       })
     }
 
-    show (req, res) {
+    show (req, res, next) {
       this.Usuario.findOne({where: {nick: req.params.nick}}).then((user) => {
         if (user === null) {
           res.status(404).send('Ese usuario no existe')
@@ -61,6 +61,8 @@
         res.status(400).send('Necesitas un apellido para registrarte')
         return
       }
+
+      // TODO: llamar a validarUsuario antes de registrarlo
 
       this.passport.authenticate('local-signup', (err) => {
         if (err) {
@@ -158,6 +160,10 @@
 
         return validated
       })
+    }
+
+    whoami (req, res) {
+      res.json(req.session.authenticated)
     }
   }
 

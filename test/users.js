@@ -1,4 +1,4 @@
-/* global describe, before, it */
+/* global describe, before, it, after */
 
 'use strict'
 
@@ -432,6 +432,64 @@ describe('User', () => {
             nombre: true,
             apellidos: true
           })
+          done()
+        })
+      })
+    })
+  })
+  describe('#whoami', () => {
+    describe('si no ha iniciado sesión ', () => {
+      it('debe enviar la información del usuario', (done) => {
+        agent
+        .get('/users/whoami')
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.body).to.equal(null)
+          done()
+        })
+      })
+    })
+    describe('si ha iniciado sesión ', () => {
+      before((done) => {
+        let user = {
+          email: 'pepe@pepe.com',
+          password: 'pepe',
+          nick: 'Pepito123',
+          nombre: 'Pepe',
+          apellidos: 'García'
+        }
+
+        agent
+        .post('/users/login')
+        .send(user).end(() => {
+          done()
+        })
+      })
+      after((done) => {
+        agent
+        .post('/users/logout')
+        .send().end(() => {
+          done()
+        })
+      })
+      it('debe enviar la información del usuario', (done) => {
+        agent
+        .get('/users/whoami')
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.body).to.deep.equal('Pepito123')
           done()
         })
       })
