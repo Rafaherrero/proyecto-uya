@@ -509,9 +509,9 @@ describe('User', () => {
             done(err)
             return
           }
-          expect(res.body.rutas[0].id).to.equal(1)
-          expect(res.body.rutas[0].origen).to.equal(19)
-          expect(res.body.rutas[0].destino).to.equal(25)
+          expect(res.body.rutas[0].id).to.equal(2)
+          expect(res.body.rutas[0].origen).to.equal(20)
+          expect(res.body.rutas[0].destino).to.equal(3)
           expect(res.body.user.nombre).to.equal('Pepe')
           expect(res.body.user.apellidos).to.equal('García')
           expect(res.body.user.email).to.equal('pepe@pepe.com')

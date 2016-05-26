@@ -82,7 +82,7 @@
           }
         }).then((ruta) => {
           if (ruta != null) {
-            console.log(ruta)
+            // console.log(ruta)
             res.status(400).send('Esa ruta ya existe')
             return
           }
@@ -96,6 +96,24 @@
           }).catch((err) => {
             return done(err)
           })
+        })
+      })
+    }
+
+    destroy (req, res) {
+      if (!req.session.authenticated) {
+        res.status(403).send('Para poder borrar rutas debes estar autenticado')
+        return
+      }
+      this.Usuario.find({where: {nick: req.session.authenticated}}).then((user) => {
+        this.Ruta.findById(req.params.id).then((ruta) => {
+          if (ruta.propietario === user.id) {
+            ruta.destroy().then(() => {
+              res.status(200).send('Esa ruta ha sido borrada')
+            })
+          } else {
+            res.status(403).send('No tienes permisos para borrar las rutas de otros usuarios')
+          }
         })
       })
     }

@@ -18,6 +18,8 @@
     get(app, '/rutas', RutasController, 'index') // Obtener las rutas que coinciden con la búsqueda
     get(app, '/ciudades', CiudadesController, 'index')  // Obtener la lista de ciuades
     post(app, '/users/validar', UsersController, 'validar')  // Validar el formato de un usuario
+
+    del(app, '/rutas/:id', RutasController, 'destroy') // Eliminar una ruta
   }
 
   function controller (name, param) {
@@ -31,5 +33,9 @@
 
   function post (app, path, controller, method) {
     app.post(path, controller[method].bind(controller))
+  }
+
+  function del (app, path, controller, method) {
+    app.delete(path, controller[method].bind(controller))
   }
 })()

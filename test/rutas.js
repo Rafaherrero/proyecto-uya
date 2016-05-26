@@ -153,6 +153,22 @@ describe('Rutas', () => {
       })
     })
   })
+
+  describe('#destroy', () => {
+    describe('al intentar eliminar una ruta', () => {
+      it('si todo es correcto se debe eliminar', (done) => {
+        agent
+        .del('/rutas/1')
+        .send()
+        .expect(200)
+        .then((res) => {
+          expect(res.error.text).to.equal(undefined)
+          expect(res.text).to.equal('Esa ruta ha sido borrada')
+          done()
+        }).catch((err) => done(err))
+      })
+    })
+  })
 })
 
 function limpiaBD () {
