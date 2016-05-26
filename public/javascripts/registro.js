@@ -3,7 +3,7 @@
 ((exports) => {
   const IP_SERVIDOR = '192.168.1.198'
 
-  let default_msg = {
+  const defaultMsg = {
     nombre: 'Tu nombre tiene que tener al menos 2 carácteres',
     apellidos: 'Tus apellidos tiene que tener al menos 2 carácteres',
     nick: 'Nick de mínimo 4 carácteres y sin espacios ni símbolos',
@@ -47,7 +47,7 @@
     let campo = $(this)
     let valor = campo.val()
     let exp = new RegExp(campo.attr('pattern'))
-    $(`#inicio_sesion label[for='${campo[0].id}']`).attr('data-error', default_msg[campo[0].id])
+    $(`#inicio_sesion label[for='${campo[0].id}']`).attr('data-error', defaultMsg[campo[0].id])
     if (!exp.test(valor)) {
       campo.addClass('invalid')
       campo.removeClass('valid')
