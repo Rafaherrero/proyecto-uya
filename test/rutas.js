@@ -31,8 +31,8 @@ describe('Rutas', () => {
     cierraSesion().then(() => done())
   })
   describe('#create', () => {
-    describe('al pedir todas las ciudades', () => {
-      it('si se le pasa correctamente la ruta', (done) => {
+    describe('cuando se le pasa correctamente una ruta', () => {
+      it('la debe crear', (done) => {
         let ruta = {
           origen: 19, // La Laguna
           destino: 25 // El Sauzal
@@ -47,7 +47,23 @@ describe('Rutas', () => {
         }).catch((err) => done(err))
       })
     })
-    describe('si ya existe el usuario', () => {
+    describe('cuando se le pasa correctamente otra ruta', () => {
+      it('la debe crear', (done) => {
+        let ruta = {
+          origen: 20,
+          destino: 3
+        }
+        agent
+        .post('/users/Pepito123/rutas')
+        .send(ruta)
+        .expect(201)
+        .then((res) => {
+          expect(res.error.text).to.equal(undefined)
+          done()
+        }).catch((err) => done(err))
+      })
+    })
+    describe('si ya existe la ruta', () => {
       it('se devuelve un error', (done) => {
         let ruta = {
           origen: 19, // La Laguna
@@ -63,7 +79,7 @@ describe('Rutas', () => {
         }).catch((err) => done(err))
       })
     })
-    describe('si ya existe el usuario', () => {
+    describe('si se intenta crear en un usuario que no es el actual', () => {
       it('se devuelve un error', (done) => {
         let ruta = {
           origen: 19, // La Laguna

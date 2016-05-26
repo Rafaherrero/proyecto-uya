@@ -75,11 +75,14 @@
       this.Usuario.findOne({where: {nick: req.session.authenticated}}).then((user) => {
         // El usuario tiene que existir, porque ha iniciado sesión
         this.Ruta.findOne({
-          propietario: user.id,
-          origen: req.body.origen,
-          destino: req.body.destino
+          where: {
+            propietario: user.id,
+            origen: req.body.origen,
+            destino: req.body.destino
+          }
         }).then((ruta) => {
           if (ruta != null) {
+            console.log(ruta)
             res.status(400).send('Esa ruta ya existe')
             return
           }
