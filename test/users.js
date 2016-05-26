@@ -321,7 +321,7 @@ describe('User', () => {
         agent
         .post('/users/validar')
         .send(user)
-        .expect(400)
+        .expect(200)
         .end((err, res) => {
           if (err) {
             console.error(res.error)
@@ -353,7 +353,7 @@ describe('User', () => {
         agent
         .post('/users/validar')
         .send(user)
-        .expect(400)
+        .expect(200)
         .end((err, res) => {
           if (err) {
             console.error(res.error)
@@ -385,7 +385,7 @@ describe('User', () => {
         agent
         .post('/users/validar')
         .send(user)
-        .expect(400)
+        .expect(200)
         .end((err, res) => {
           if (err) {
             console.error(res.error)
