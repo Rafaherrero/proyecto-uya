@@ -495,4 +495,29 @@ describe('User', () => {
       })
     })
   })
+
+  describe('#show', () => {
+    describe('al pedir la información de un usuario ', () => {
+      it('se debe recibir su información y sus rutas', (done) => {
+        agent
+        .get('/users/Pepito123')
+        .send()
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            console.error(res.error)
+            done(err)
+            return
+          }
+          expect(res.body.rutas[0].id).to.equal(1)
+          expect(res.body.rutas[0].origen).to.equal(19)
+          expect(res.body.rutas[0].destino).to.equal(25)
+          expect(res.body.user.nombre).to.equal('Pepe')
+          expect(res.body.user.apellidos).to.equal('García')
+          expect(res.body.user.email).to.equal('pepe@pepe.com')
+          done()
+        })
+      })
+    })
+  })
 })

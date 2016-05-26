@@ -4,7 +4,9 @@
   class UsersController {
     constructor (passport) {
       this.passport = passport
-      this.Usuario = require('../models/index').Usuario
+      let models = require('../models/index')
+      this.Usuario = models.Usuario
+      this.Ruta = models.Ruta
 
       this.nombreRegex = /..+/
       this.apellidoRegex = /..+/
@@ -31,7 +33,10 @@
         if (user === null) {
           res.status(404).send('Ese usuario no existe')
         } else {
-          res.status(200).send(user)
+          // res.status(200).send(user)
+          this.Ruta.findAll({where: {propietario: user.id}}).then((rutas) => {
+            res.send({user, rutas})
+          })
         }
       })
     }
