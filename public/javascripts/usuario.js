@@ -6,7 +6,6 @@
   let CIUDADES_GLOBAL = []
 
   function generarRuta (id, origen, destino) {
-    console.log(CIUDADES_GLOBAL)
     return `
     <div class="row">
       <div class="col s12">
@@ -107,8 +106,6 @@
   function establacerRutas (rutas) {
     let stringFinal = ''
     if (rutas.length === 0) {
-      // Mostrar el div de que no hay rutas
-      console.log('Mostrar el div de que no hay rutas')
       stringFinal = noHayRutas
     } else {
       rutas.forEach((ruta) => {
@@ -132,10 +129,9 @@
       $('#mensajeError').html('Selecciona un punto de destino')
       return
     }
-    console.log(origen)
-    console.log(destino)
+
     $.post(`http://${IP_SERVIDOR}:8080/users/${NICK}/rutas`, {origen, destino}, (mensaje) => {
-      console.log(mensaje)
+      $('#mensajeError').html('')
       actualizarRutas()
     })
     .fail((err) => {
@@ -155,15 +151,11 @@
 
   function eliminaRuta (e) {
     e.preventDefault()
-    console.log('Debo eliminar esta ruta')
     let rutaId = e.target.attributes[2].value
-
-    console.log(rutaId)
     $.ajax({
       url: `http://${IP_SERVIDOR}:8080/rutas/${rutaId}`,
       type: 'DELETE',
       success: (result) => {
-        console.log(result)
         actualizarRutas()
       },
       fail: (err) => {
