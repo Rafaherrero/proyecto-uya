@@ -59,6 +59,7 @@
     }
 
     create (req, res, done) {
+      console.log('Voy a crear una nueva ruta')
       if (req.session.authenticated !== req.params.nick) {
         res.status(403).send('No puedes crearle rutas a otros usuarios')
         return
@@ -71,6 +72,7 @@
         res.status(400).send('Necesitas un destino de la ruta')
         return
       }
+      //res.status(201).send('La ruta ha sido creada')
 
       this.Usuario.findOne({where: {nick: req.session.authenticated}}).then((user) => {
         // El usuario tiene que existir, porque ha iniciado sesión
@@ -92,9 +94,7 @@
             destino: req.body.destino
           }).then((newUser) => {
             res.status(201).send('La ruta ha sido creada')
-            return done()
-          }).catch((err) => {
-            return done(err)
+            return
           })
         })
       })
