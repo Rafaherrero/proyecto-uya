@@ -5,7 +5,7 @@
   let NICK = ''
   let CIUDADES_GLOBAL = []
 
-  function generarRuta (origen, destino) {
+  function generarRuta (id, origen, destino) {
     console.log(CIUDADES_GLOBAL)
     return `
     <div class="row">
@@ -19,6 +19,9 @@
           </div>
           <div class="card-action">
             <a href="#">Ver ruta</a>
+            <a href="#" class="elminarRuta" laid="${id}">
+              Eliminar ruta
+            </a>
           </div>
         </div>
       </div>
@@ -109,10 +112,11 @@
       stringFinal = noHayRutas
     } else {
       rutas.forEach((ruta) => {
-        stringFinal += generarRuta(ruta.origen, ruta.destino)
+        stringFinal += generarRuta(ruta.id, ruta.origen, ruta.destino)
       })
     }
     $('#rutas').html(stringFinal)
+    $('.elminarRuta').click(eliminaRuta)
   }
 
   function crearNuevaRuta (e) {
@@ -132,6 +136,7 @@
     console.log(destino)
     $.post(`http://${IP_SERVIDOR}:8080/users/${NICK}/rutas`, {origen, destino}, (mensaje) => {
       console.log(mensaje)
+      actualizarRutas()
     })
     .fail((err) => {
       $('#mensajeError').html(err.responseText)
@@ -146,6 +151,33 @@
   function cambiaOrigen (e) {
     $(`#selectDestino option[value="${e.target.value}"]`).attr('disabled', 'disabled').siblings().removeAttr('disabled')
     $('select').material_select()
+  }
+
+  function eliminaRuta (e) {
+    e.preventDefault()
+    console.log('Debo eliminar esta ruta')
+    let rutaId = e.target.attributes[2].value
+
+    console.log(rutaId)
+    $.ajax({
+      url: `http://${IP_SERVIDOR}:8080/rutas/${rutaId}`,
+      type: 'DELETE',
+      success: (result) => {
+        console.log(result)
+        actualizarRutas()
+      },
+      fail: (err) => {
+        console.log(err)
+      }
+    })
+  }
+
+  function actualizarRutas () {
+    $.get(`http://${IP_SERVIDOR}:8080/users/${NICK}`,
+      (data) => {
+        establacerRutas(data.rutas)
+      }, 'json'
+    )
   }
 })()
 
