@@ -1,12 +1,10 @@
 /* global $ */
 
-(() => {
-  const IP_SERVIDOR = '192.168.1.198'
+((exports) => {
   let NICK = ''
   let CIUDADES_GLOBAL = []
 
   function generarRuta (id, origen, destino) {
-    console.log(CIUDADES_GLOBAL)
     return `
     <div class="row">
       <div class="col s12">
@@ -50,31 +48,15 @@
   $(() => {
     $('#formNuevaRuta').submit(crearNuevaRuta)
 
-    $.fn.serializeObject = function () {
-      var o = {}
-      var a = this.serializeArray()
-      $.each(a, function () {
-        if (o[this.name] !== undefined) {
-          if (!o[this.name].push) {
-            o[this.name] = [o[this.name]]
-          }
-          o[this.name].push(this.value || '')
-        } else {
-          o[this.name] = this.value || ''
-        }
-      })
-      return o
-    }
-
     /* INICIALIZACIÓN */
-    $.get(`http://${IP_SERVIDOR}:8080/users/whoami`,
+    $.get(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/whoami`,
     (nick) => {
       if (!nick.info) {
         window.location.href = 'login.html'
       } else {
-        $.get(`http://${IP_SERVIDOR}:8080/users/${nick.info}`,
+        $.get(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/${nick.info}`,
         (data) => {
-          $.get(`http://${IP_SERVIDOR}:8080/ciudades`,
+          $.get(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/ciudades`,
           (ciudades) => {
             establecerCiudades(ciudades)
             establecerDatos(data.user)
@@ -87,7 +69,7 @@
 
   function establecerDatos (usuario) {
     $('.profile').initial({name: usuario.nombre})
-    $('#breadNombre').html(usuario.nick)
+    $('#breadNombre').html(`Tu perfil (${usuario.nick})`)
     $('#nombreCompleto').html(`${usuario.nombre} ${usuario.apellidos}`)
     $('#correoUsuario').html(usuario.email)
     NICK = usuario.nick
@@ -107,8 +89,6 @@
   function establacerRutas (rutas) {
     let stringFinal = ''
     if (rutas.length === 0) {
-      // Mostrar el div de que no hay rutas
-      console.log('Mostrar el div de que no hay rutas')
       stringFinal = noHayRutas
     } else {
       rutas.forEach((ruta) => {
@@ -132,10 +112,9 @@
       $('#mensajeError').html('Selecciona un punto de destino')
       return
     }
-    console.log(origen)
-    console.log(destino)
-    $.post(`http://${IP_SERVIDOR}:8080/users/${NICK}/rutas`, {origen, destino}, (mensaje) => {
-      console.log(mensaje)
+
+    $.post(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/${NICK}/rutas`, {origen, destino}, (mensaje) => {
+      $('#mensajeError').html('')
       actualizarRutas()
     })
     .fail((err) => {
@@ -155,15 +134,11 @@
 
   function eliminaRuta (e) {
     e.preventDefault()
-    console.log('Debo eliminar esta ruta')
     let rutaId = e.target.attributes[2].value
-
-    console.log(rutaId)
     $.ajax({
-      url: `http://${IP_SERVIDOR}:8080/rutas/${rutaId}`,
+      url: `http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/rutas/${rutaId}`,
       type: 'DELETE',
       success: (result) => {
-        console.log(result)
         actualizarRutas()
       },
       fail: (err) => {
@@ -173,11 +148,11 @@
   }
 
   function actualizarRutas () {
-    $.get(`http://${IP_SERVIDOR}:8080/users/${NICK}`,
+    $.get(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/${NICK}`,
       (data) => {
         establacerRutas(data.rutas)
       }, 'json'
     )
   }
-})()
+})(this)
 
