@@ -28,7 +28,7 @@
             <div class="nav-wrapper brown">
                 <div class="col s12">
                     <a class="breadcrumb" href="../index.html">Inicio</a>
-                    <a class="breadcrumb" href="#!">ALGUIEN</a>
+                    <a class="breadcrumb" href="#!">Iniciar Sesión</a>
                 </div>
             </div>
         </nav>
@@ -47,14 +47,14 @@
                             <div class="input-field col s12">
                                 <i class="fa fa-envelope-o prefix" aria-hidden="true"></i>
                                 <input aria-required='true' class='validate' id='email' name='email' pattern='^[A-Za-z0-9](([_.-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([.-]?[a-zA-Z0-9]+)*).([A-Za-z]{2,})$' required='' type='email' value=''>
-                                <label data-error='Formato de correo erróneo' data-success='Válido' for='email'>Correo</label>
+                                <label data-error='Formato de correo erróneo' data-success='Válido' for='email' id='label_email'>Correo</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="fa fa-key prefix" aria-hidden="true"></i>
-                                <input aria-required='true' class='validate' id='password' name='password' required type='password' value=''>
-                                <label data-error='Contraseña mínimo de 10 carácteres' data-success='Válido' for='password'>Contraseña</label>
+                                <input aria-required='true' class='validate' id='password' name='password' required type='password' value='' pattern="..........+">
+                                <label data-error='Contraseña mínimo de 10 carácteres' data-success='Válido' for='password' id="label_password">Contraseña</label>
                             </div>
                         </div>
                         <div class="row">
@@ -104,6 +104,7 @@
     <script charset='utf-8' src='../vendor/Materialize/dist/js/materialize.js' type='text/javascript'></script>
     <script charset='utf-8' src='../javascripts/material-config.js' type='text/javascript'></script>
     <script charset='utf-8' src='../javascripts/jquery-config.js' type='text/javascript'></script>
+    <script charset='utf-8' src='../javascripts/server-config.js' type='text/javascript'></script>
     <script charset='utf-8' src='../javascripts/navbar.js' type='text/javascript'></script>
     <script charset='utf-8' src='../javascripts/login.js' type='text/javascript'></script>
 </body>

@@ -13,29 +13,20 @@
     <div class="navs-wrapper">
         <nav>
             <div class="nav-wrapper brown">
-                <a class="brand-logo center" href="./index.html"><img src="images/Logo_Sharis_grande.svg" alt="Logo de Sharis"></a> <a class="button-collapse" data-activates="mobile-demo" href="#"><i class="material-icons burgermenu">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="./html/registro.html">Registrarse</a>
-                    </li>
-                    <li>
-                        <a href="./html/login.html">Iniciar Sesion</a>
-                    </li>
+                <a class="brand-logo center" href="../index.html"><img src="../images/Logo_Sharis_grande.svg" alt="Logo de Sharis"></a> <a class="button-collapse" data-activates="mobile-demo" href="#"><i class="material-icons burgermenu">menu</i></a>
+                <ul class="right hide-on-med-and-down" id="lista-uno">
+                    <!-- Esta zona se rellena si se ha iniciado sesión o no -->
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
-                    <li>
-                        <a href="./html/registro.html">Registrarse</a>
-                    </li>
-                    <li>
-                        <a href="./html/login.html">Iniciar Sesion</a>
-                    </li>
+                    <!-- Esta zona se rellena si se ha iniciado sesión o no -->
                 </ul>
             </div>
         </nav>
         <nav class="location">
             <div class="nav-wrapper brown">
                 <div class="col s12">
-                    <a class="breadcrumb" href="#!">Inicio</a>
+                    <a class="breadcrumb" href="../index.html">Inicio</a>
+                    <a class="breadcrumb" href="#!" id="breadNombre"></a>
                 </div>
             </div>
         </nav>
@@ -54,7 +45,7 @@
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
                         <div class="card-content center">
-                            <span class="card-title"><i class="material-icons large">payment</i></span>
+                            <span class="card-title"><i class="material-icons large" aria-hidden="true">payment</i></span>
                             <p>SHARIS le permite ahorrar tiempo y dinero a la hora de realizar sus viajes compartiendo vehículos con otros interesados.</p>
                         </div>
                     </div>
@@ -62,7 +53,7 @@
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
                         <div class="card-content center">
-                            <span class="card-title"><i class="material-icons large">perm_scan_wifi</i></span>
+                            <span class="card-title"><i class="material-icons large" aria-hidden="true">perm_scan_wifi</i></span>
                             <p>Con SHARIS estará permanentemente conectado, por lo que conocerá en todo momento donde se encuentra el conductor.</p>
                         </div>
                     </div>
@@ -70,7 +61,7 @@
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
                         <div class="card-content center">
-                            <span class="card-title"><i class="material-icons large">thumb_up</i></span>
+                            <span class="card-title"><i class="material-icons large" aria-hidden="true">thumb_up</i></span>
                             <p>SHARIS cuenta actualmente con la valoración máxima de 5 estrellas en las principales plataformas de App Store y Google Play.</p>
                         </div>
                     </div>
@@ -78,7 +69,7 @@
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
                         <div class="card-content center">
-                            <span class="card-title"><i class="material-icons large">settings_cell</i></span>
+                            <span class="card-title"><i class="material-icons large" aria-hidden="true">settings_cell</i></span>
                             <p>Al utilizar las últimas tecnologías disponibles en el mercado, podrá usar SHARIS desde la plataforma que usted desee.</p>
                         </div>
                     </div>
@@ -122,11 +113,11 @@
             </div>
         </div>
     </footer>
-    <script charset='utf-8' src='./vendor/jquery/dist/jquery.js' type='text/javascript'>
-    </script>
-    <script charset='utf-8' src='./vendor/Materialize/dist/js/materialize.js' type='text/javascript'>
-    </script>
-    <script charset='utf-8' src='./javascripts/material-config.js' type='text/javascript'>
-    </script>
+    <script charset='utf-8' src='./vendor/jquery/dist/jquery.js' type='text/javascript'></script>
+    <script charset='utf-8' src='./vendor/Materialize/dist/js/materialize.js' type='text/javascript'></script>
+    <script charset='utf-8' src='../javascripts/jquery-config.js' type='text/javascript'></script>
+    <script charset='utf-8' src='./javascripts/material-config.js' type='text/javascript'></script>
+    <script charset='utf-8' src='../javascripts/server-config.js' type='text/javascript'></script>
+    <script charset='utf-8' src='../javascripts/navbar.js' type='text/javascript'></script>
 </body>
 </html>

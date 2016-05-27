@@ -3,8 +3,6 @@
 ((exports) => {
   'use strict'
 
-  const IP_SERVIDOR = '192.168.1.198'
-
   const defaultMsg = {
     nombre: 'Tu nombre tiene que tener al menos 2 carácteres',
     apellidos: 'Tus apellidos tiene que tener al menos 2 carácteres',
@@ -65,7 +63,7 @@
     campo.attr('data-error', 'Ese usuario ya existe')
 
     if (exp.test(valor)) {
-      $.post(`http://${IP_SERVIDOR}:8080/users/validar`, {
+      $.post(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/validar`, {
         nick: valor
       },
       (data) => {
@@ -87,7 +85,7 @@
     let exp = new RegExp(campo.attr('pattern'))
 
     if (exp.test(valor)) {
-      $.post(`http://${IP_SERVIDOR}:8080/users/validar`, {
+      $.post(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/validar`, {
         email: valor
       },
       (data) => {
@@ -107,9 +105,9 @@
     e.preventDefault()
     let usuario = $('#inicio_sesion').serializeObject()
     console.log(usuario)
-    $.post(`http://${IP_SERVIDOR}:8080/users/validar`, usuario, (data) => {
+    $.post(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/validar`, usuario, (data) => {
       if (data.todoBien) {
-        $.post(`http://${IP_SERVIDOR}:8080/users/signup`, usuario, (data) => {
+        $.post(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/signup`, usuario, (data) => {
           console.log(data)
           window.location.href = 'inicioCorrecto.html'
         })

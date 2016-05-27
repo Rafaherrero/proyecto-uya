@@ -1,7 +1,7 @@
 /* global $ */
 
-(() => {
-  const IP_SERVIDOR = '192.168.1.198'
+((exports) => {
+  console.log()
 
   const noIniciado =
   `
@@ -13,18 +13,22 @@
     </li>
   `
 
-  const iniciado =
-  `
-    <li>
-      <a href="../html/usuario.html">Tu Perfil</a>
-    </li>
-    <li>
-      <a href="#" id='cerrarSesion'>Cerrar Sesión</a>
-    </li>
-  `
+  function iniciado (attr) {
+    return `
+      <li>
+        <a href="../html/buscar.html" ${attr} >Buscar</a>
+      </li>
+      <li>
+        <a href="../html/usuario.html" ${attr} >Tu Perfil</a>
+      </li>
+      <li>
+        <a href="#" id='cerrarSesion' ${attr} >Cerrar Sesión</a>
+      </li>
+    `
+  }
 
   $(() => {
-    $.get(`http://${IP_SERVIDOR}:8080/users/whoami`,
+    $.get(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/whoami`,
     (data) => {
       console.log(data)
       if (data.info == null) {
@@ -39,8 +43,8 @@
 
   function ponerMisdatos () {
     console.log('Tienes una sesión iniciada, así que voy a mostrar cerrar ssesión y tu perfil')
-    $('#lista-uno').html(iniciado)
-    $('#mobile-demo').html(iniciado)
+    $('#lista-uno').html(iniciado())
+    $('#mobile-demo').html(iniciado('tabindex="-1"'))
   }
 
   function ponerNavNormal () {
@@ -50,10 +54,10 @@
   }
 
   function cierraSesion () {
-    $.post(`http://${IP_SERVIDOR}:8080/users/logout`,
+    $.post(`http://${exports.REST_CONFIG.IP}:${exports.REST_CONFIG.PORT}/users/logout`,
     (data) => {
       console.log(data)
       window.location.href = '../index.html'
     }, 'text')
   }
-})()
+})(this)
