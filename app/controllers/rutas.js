@@ -10,32 +10,32 @@
     }
 
     index (req, res) {
-      if (!req.body.origen) {
+      if (!req.query.origen) {
         res.status(400).send('Tienes que decirme desde donde quieres ir')
         return
       }
-      if (!req.body.destino) {
+      if (!req.query.destino) {
         res.status(400).send('Tienes que decirme hacia donde quieres ir')
         return
       }
 
       this.Ruta.findAll({where: {
-        origen: req.body.origen,
-        destino: req.body.destino
+        origen: parseInt(req.query.origen),
+        destino: (req.query.destino)
       }}).then((rutas) => {
-        if (rutas.length === 0) {
-          res.status(404).send('No se ha encontrado ningún usuario con esos parámetros')
-        }
+        console.log('Rutas encontradas')
+        console.log(rutas)
         let promises = []
         rutas.forEach((ruta) => {
-          promises.push(this.Usuario.findById(ruta.id, {
+          promises.push(this.Usuario.findById(ruta.propietario, {
             attributes: [
               'nick'
             ]
           }))
         })
         Promise.all(promises).then((usuarios) => {
-          res.send(usuarios)
+          console.log(usuarios)
+          res.send({usuarios, rutas})
         })
       })
     }
