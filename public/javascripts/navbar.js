@@ -13,11 +13,20 @@
     </li>
   `
 
-  function iniciado (attr) {
-    return `
+  function iniciado (attr, mob) {
+    let busEscritorio = `
       <li>
         <a href="../html/buscar.html" ${attr} class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Buscar" aria-labelledby="buscar"><i class="fa fa-search" aria-hidden="true"></i></a>
       </li>
+    `
+
+    let busMobil = `
+      <li>
+        <a href="../html/buscar.html" ${attr} >Buscar</a>
+      </li>
+    `
+
+    let resto = `
       <li>
         <a href="../html/usuario.html" ${attr} >Tu Perfil</a>
       </li>
@@ -26,6 +35,12 @@
       </li>
       <span id="buscar" class="hide">Buscar</span>
     `
+
+    if (mob) {
+      return busMobil + resto
+    }
+
+    return busEscritorio + resto
   }
 
   $(() => {
@@ -46,7 +61,7 @@
   function ponerMisdatos () {
     console.log('Tienes una sesión iniciada, así que voy a mostrar cerrar ssesión y tu perfil')
     $('#lista-uno').html(iniciado())
-    $('#mobile-demo').html(iniciado('tabindex="-1"'))
+    $('#mobile-demo').html(iniciado('tabindex="-1"', true))
   }
 
   function ponerNavNormal () {
