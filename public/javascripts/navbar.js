@@ -16,7 +16,7 @@
   function iniciado (attr) {
     return `
       <li>
-        <a href="../html/buscar.html" ${attr} >Buscar</a>
+        <a href="../html/buscar.html" ${attr} class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Buscar" aria-labelledby="buscar"><i class="fa fa-search" aria-hidden="true"></i></a>
       </li>
       <li>
         <a href="../html/usuario.html" ${attr} >Tu Perfil</a>
@@ -24,6 +24,7 @@
       <li>
         <a href="#" id='cerrarSesion' ${attr} >Cerrar Sesión</a>
       </li>
+      <span id="buscar" class="hide">Buscar</span>
     `
   }
 
@@ -36,6 +37,7 @@
       } else {
         ponerMisdatos()
       }
+      $('.tooltipped').tooltip({delay: 50})
 
       $('#cerrarSesion').click(cierraSesion)
     }, 'json')
