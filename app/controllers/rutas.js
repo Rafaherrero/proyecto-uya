@@ -29,13 +29,18 @@
         rutas.forEach((ruta) => {
           promises.push(this.Usuario.findById(ruta.propietario, {
             attributes: [
-              'nick'
+              'nick',
+              'nombre',
+              'apellidos'
             ]
           }))
         })
         Promise.all(promises).then((usuarios) => {
           console.log(usuarios)
-          res.send({usuarios, rutas})
+          rutas.forEach((_, i) => {
+            rutas[i].propietario = usuarios[i]
+          })
+          res.send(rutas)
         })
       })
     }
