@@ -16,7 +16,9 @@
   function iniciado (attr, mob) {
     let busEscritorio = `
       <li>
-        <a href="../html/buscar.html" ${attr} class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Buscar" aria-labelledby="buscar"><i class="fa fa-search" aria-hidden="true"></i></a>
+        <a href="../html/buscar.html" ${attr} class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Buscar" aria-labelledby="buscar">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </a>
       </li>
     `
 

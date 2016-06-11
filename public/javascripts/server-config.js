@@ -1,6 +1,6 @@
 ((exports) => {
   exports.REST_CONFIG = {
-    IP: '192.168.1.198',
+    IP: '127.0.0.1',
     PORT: '8080'
   }
 })(this)

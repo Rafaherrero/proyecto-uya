@@ -37,3 +37,7 @@ node_modules
 
 # Dependencias front-end
 public/vendor
+
+#Archivos propios
+app.js
+public/javascripts/server-config.js
