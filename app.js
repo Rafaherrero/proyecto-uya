@@ -45,7 +45,7 @@
 
   // Habilitar el CORS
   // IMPORTANTE: Aquí hay que poner la dirección del servidor de front-end
-  app.use(cors({origin: 'http://192.168.1.198:3000', credentials: true}))
+  app.use(cors({origin: 'http://127.0.0.1:3000', credentials: true}))
 
   // Establecer el modo del logger, si estamos en pruebas no se activa
   if (env !== 'test') {
