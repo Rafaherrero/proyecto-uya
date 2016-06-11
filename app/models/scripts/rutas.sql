@@ -18,52 +18,20 @@ CREATE SCHEMA IF NOT EXISTS `sharis_development` DEFAULT CHARACTER SET utf8 COLL
 USE `sharis_development` ;
 
 -- -----------------------------------------------------
--- Table `sharis_development`.`Ciudades`
+-- Table `sharis_development`.`Rutas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sharis_development`.`Ciudades` (
+CREATE TABLE IF NOT EXISTS `sharis_development`.`Rutas` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(255) NOT NULL,
-  `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `propietario` INT(11) NOT NULL,
+  `origen` INT(11) NOT NULL,
+  `destino` INT(11) NOT NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = ucs2
 COLLATE = ucs2_spanish_ci;
 
-
-INSERT INTO `sharis_development`.`Ciudades`
-    (id, nombre)
-VALUES
-    (1, 'Adeje'),
-    (2, 'Arafo'),
-    (3, 'Arico'),
-    (4, 'Arona'),
-    (5, 'Buenavista del Norte'),
-    (6, 'Candelaria'),
-    (7, 'Fasnia'),
-    (8, 'Garachico'),
-    (9, 'Granadilla de Abona'),
-    (10, 'La Guancha'),
-    (11, 'Guía de Isora'),
-    (12, 'Güímar'),
-    (13, 'Icod de los Vinos'),
-    (14, 'La Matanza de Acentejo'),
-    (15, 'La Orotava'),
-    (16, 'Puerto de la Cruz'),
-    (17, 'Los Realejos'),
-    (18, 'El Rosario'),
-    (19, 'San Cristóbal de La Laguna'),
-    (20, 'San Juan de la Rambla'),
-    (21, 'San Miguel de Abona'),
-    (22, 'Santa Cruz de Tenerife'),
-    (23, 'Santa Úrsula'),
-    (24, 'Santiago del Teide'),
-    (25, 'El Sauzal'),
-    (26, 'Los Silos'),
-    (27, 'Tacoronte'),
-    (28, 'El Tanque'),
-    (29, 'Tegueste'),
-    (30, 'La Victoria de Acentejo');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
