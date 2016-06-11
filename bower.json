@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Rafaherrero/proyecto-uya",
   "dependencies": {
     "jquery": "^2.2.3",
-    "Materialize": "materialize#^0.97.6"
+    "Materialize": "materialize#^0.97.6",
+    "initial.js": "^0.1.0"
   }
 }

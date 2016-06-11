@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema sharis
+-- Schema sharis_development
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema sharis
+-- Schema sharis_development
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `sharis` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci ;
-USE `sharis` ;
+CREATE SCHEMA IF NOT EXISTS `sharis_development` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci ;
+USE `sharis_development` ;
 
 -- -----------------------------------------------------
--- Table `sharis`.`usuarios`
+-- Table `sharis_development`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sharis`.`usuarios` (
+CREATE TABLE IF NOT EXISTS `sharis_development`.`usuarios` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
