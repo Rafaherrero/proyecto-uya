@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width" name="viewport">
-    <link href="images/favicon.png" rel="icon" type="image/png">
+    <link href="../images/favicon.png" rel="icon" type="image/png">
     <title>Sharis</title>
     <link href="../vendor/Materialize/dist/css/materialize.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -36,7 +36,7 @@
     </div>
     <div class="container main">
         <div class="row">
-            <div class="col s12">
+            <div class="col s12" tabindex="0">
                 <h1 class="center-align">Tu perfil</h1>
             </div>
         </div>
@@ -45,10 +45,10 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col s12">
-                            <div class="card-panel z-depth-1">
+                            <div class="card-panel z-depth-1" tabindex="0">
                                 <div class="row">
                                     <div class="col s4">
-                                        <img class="profile circle responsive-img"/>
+                                        <img class="profile circle responsive-img" alt="Imagen de usuarie"/>
                                     </div>
                                      <div class="col s8">
                                         <p class="black-text" id="nombreCompleto">
@@ -67,17 +67,17 @@
                             <div class="card">
                                 <form id="formNuevaRuta">
                                     <div class="card-content">
-                                        <span class="card-title">Crear una nueva ruta</span>
+                                        <span class="card-title" tabindex="0">Crear una nueva ruta</span>
                                         <div class="row">
                                             <div class="input-field col m12 l6">
                                                 <select id="selectOrigen">
-                                                    <option value="" disabled selected>Selecciona una Opción</option>
+                                                    <option value="" disabled selected>Selecciona una opción de origen</option>
                                                 </select>
                                                 <label>Origen</label>
                                             </div>
                                             <div class="input-field col m12 l6">
                                                 <select id="selectDestino">
-                                                    <option value="" disabled selected>Selecciona una Opción</option>
+                                                    <option value="" disabled selected>Selecciona una opción de destino</option>
                                                 </select>
                                                 <label>Destino</label>
                                             </div>
@@ -104,7 +104,7 @@
             </div>
         </div>
     </div>
-    <footer class="page-footer brown" role="contentinfo">
+<footer class="page-footer brown" role="contentinfo">
         <div class="container">
             <div class="row">
                 <div class="col l4 s12">
@@ -124,7 +124,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col l6 s12">
+                <div class="col l6 s12" tabindex="0">
                     <h5 class="white-text">Sobre Sharis</h5>
                     <p class="grey-text text-lighten-4">Sharis es una aplicación web que te permite concretar rutas con otras personas. De este modo podemos ahorrar combustible, dinero y ser más ecológicos.</p>
                 </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width" name="viewport">
-    <link href="images/favicon.png" rel="icon" type="image/png">
+    <link href="../images/favicon.png" rel="icon" type="image/png">
     <title>Sharis</title>
     <link href="../vendor/Materialize/dist/css/materialize.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,13 +13,13 @@
 </head>
 <body>
     <div class="navs-wrapper">
-        <nav>
+<nav>
             <div class="nav-wrapper brown">
                 <a class="brand-logo center" href="../index.html"><img src="../images/Logo_Sharis_grande.svg" alt="Logo de Sharis"></a> <a class="button-collapse" data-activates="mobile-demo" href="#"><i class="material-icons burgermenu">menu</i></a>
                 <ul class="right hide-on-med-and-down" id="lista-uno">
                     <!-- Esta zona se rellena si se ha iniciado sesión o no -->
                 </ul>
-                <ul class="side-nav" id="mobile-demo">
+                <ul class="side-nav" id="mobile-demo" aria-hidden="true">
                     <!-- Esta zona se rellena si se ha iniciado sesión o no -->
                 </ul>
             </div>
@@ -39,7 +39,7 @@
                 <form id="inicio_sesion">
                     <div class="container">
                         <div class="row">
-                            <div class="col s12">
+                            <div class="col s12" tabindex="0">
                                 <h1>Registrarse</h1>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col l6 s12">
+                <div class="col l6 s12" tabindex="0">
                     <h5 class="white-text">Sobre Sharis</h5>
                     <p class="grey-text text-lighten-4">Sharis es una aplicación web que te permite concretar rutas con otras personas. De este modo podemos ahorrar combustible, dinero y ser más ecológicos.</p>
                 </div>

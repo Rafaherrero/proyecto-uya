@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width" name="viewport">
-    <link href="images/favicon.png" rel="icon" type="image/png">
+    <link href="../images/favicon.png" rel="icon" type="image/png">
     <title>Sharis</title>
     <link href="./vendor/Materialize/dist/css/materialize.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,13 +12,13 @@
 </head>
 <body>
     <div class="navs-wrapper">
-        <nav>
+<nav>
             <div class="nav-wrapper brown">
                 <a class="brand-logo center" href="../index.html"><img src="../images/Logo_Sharis_grande.svg" alt="Logo de Sharis"></a> <a class="button-collapse" data-activates="mobile-demo" href="#"><i class="material-icons burgermenu">menu</i></a>
                 <ul class="right hide-on-med-and-down" id="lista-uno">
                     <!-- Esta zona se rellena si se ha iniciado sesión o no -->
                 </ul>
-                <ul class="side-nav" id="mobile-demo">
+                <ul class="side-nav" id="mobile-demo" aria-hidden="true">
                     <!-- Esta zona se rellena si se ha iniciado sesión o no -->
                 </ul>
             </div>
@@ -27,7 +27,6 @@
             <div class="nav-wrapper brown">
                 <div class="col s12">
                     <a class="breadcrumb" href="../index.html">Inicio</a>
-                    <a class="breadcrumb" href="#!" id="breadNombre"></a>
                 </div>
             </div>
         </nav>
@@ -40,12 +39,12 @@
         <div class="container-fluid">
             <div class="divider"></div>
             <div class="row center">
-                <div class="col s12">
+                <div class="col s12" tabindex="0">
                     <h1>SHARIS MADE IT EASY!</h1>
                 </div>
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
-                        <div class="card-content center">
+                        <div class="card-content center" tabindex="0">
                             <span class="card-title"><i class="material-icons large" aria-hidden="true">payment</i></span>
                             <p>SHARIS le permite ahorrar tiempo y dinero a la hora de realizar sus viajes compartiendo vehículos con otros interesados.</p>
                         </div>
@@ -53,7 +52,7 @@
                 </div>
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
-                        <div class="card-content center">
+                        <div class="card-content center" tabindex="0">
                             <span class="card-title"><i class="material-icons large" aria-hidden="true">perm_scan_wifi</i></span>
                             <p>Con SHARIS estará permanentemente conectado, por lo que conocerá en todo momento donde se encuentra el conductor.</p>
                         </div>
@@ -61,7 +60,7 @@
                 </div>
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
-                        <div class="card-content center">
+                        <div class="card-content center" tabindex="0">
                             <span class="card-title"><i class="material-icons large" aria-hidden="true">thumb_up</i></span>
                             <p>SHARIS cuenta actualmente con la valoración máxima de 5 estrellas en las principales plataformas de App Store y Google Play.</p>
                         </div>
@@ -69,7 +68,7 @@
                 </div>
                 <div class="col s12 m6 l3">
                     <div class="card hoverable">
-                        <div class="card-content center">
+                        <div class="card-content center" tabindex="0">
                             <span class="card-title"><i class="material-icons large" aria-hidden="true">settings_cell</i></span>
                             <p>Al utilizar las últimas tecnologías disponibles en el mercado, podrá usar SHARIS desde la plataforma que usted desee.</p>
                         </div>
@@ -102,7 +101,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col l6 s12">
+                <div class="col l6 s12" tabindex="0">
                     <h5 class="white-text">Sobre Sharis</h5>
                     <p class="grey-text text-lighten-4">Sharis es una aplicación web que te permite concretar rutas con otras personas. De este modo podemos ahorrar combustible, dinero y ser más ecológicos.</p>
                 </div>

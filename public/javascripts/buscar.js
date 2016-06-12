@@ -103,7 +103,7 @@
               innerRow += generarCol(generarCard(`
                 ${CIUDADES_GLOBAL[rutas[ra].origen - 1].nombre} - ${CIUDADES_GLOBAL[rutas[ra].destino - 1].nombre}
               `, `
-              <div class="chip">
+              <div class="chip" tabindex="0">
                 <img alt="" aria-hidden id="profile_${rutas[ra].propietario.nick}">
                 ${rutas[ra].propietario.nombre} ${rutas[ra].propietario.apellidos}
               </div>
@@ -115,7 +115,7 @@
               innerRow += generarCol(generarCard(`
                 ${CIUDADES_GLOBAL[rutas[ra].origen - 1].nombre} - ${CIUDADES_GLOBAL[rutas[ra].destino - 1].nombre}
               `, `
-              <div class="chip">
+              <div class="chip" tabindex="0">
                 <img alt="" aria-hidden id="profile_${rutas[ra].propietario.nick}">
                 ${rutas[ra].propietario.nombre} ${rutas[ra].propietario.apellidos}
               </div>
@@ -162,7 +162,7 @@
     return `
     <div class="card">
       <div class="card-content">
-        <span class="card-title">
+        <span class="card-title" tabindex="0">
           ${titulo}
         </span>
         <p>${descripcion}</p>

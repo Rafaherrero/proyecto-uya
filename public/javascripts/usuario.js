@@ -10,7 +10,7 @@
       <div class="col s12">
         <div class="card">
           <div class="card-content">
-            <span class="card-title">
+            <span class="card-title" tabindex="0">
               ${CIUDADES_GLOBAL[origen - 1].nombre} - ${CIUDADES_GLOBAL[destino - 1].nombre}
             </span>
             <p></p>
@@ -31,7 +31,7 @@
   `
   <div class="row">
       <div class="col s12">
-        <div class="card">
+        <div class="card" tabindex="0">
           <div class="card-content">
             <span class="card-title">No tienes rutas! :(</span>
             <p>En el botón debajo de tu perfil, puedes añadir una nueva ruta</p>

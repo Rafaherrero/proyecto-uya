@@ -3,6 +3,16 @@
 ((exports) => {
   console.log()
 
+  const noIniciado2 =
+  `
+    <li>
+      <a tabindex="-1" href="../html/registro.html">Registrarse</a>
+    </li>
+    <li>
+      <a tabindex="-1" href="../html/login.html">Iniciar Sesion</a>
+    </li>
+  `
+
   const noIniciado =
   `
     <li>
@@ -61,7 +71,7 @@
   })
 
   function ponerMisdatos () {
-    console.log('Tienes una sesión iniciada, así que voy a mostrar cerrar ssesión y tu perfil')
+    console.log('Tienes una sesión iniciada, así que voy a mostrar cerrar sesión y tu perfil')
     $('#lista-uno').html(iniciado())
     $('#mobile-demo').html(iniciado('tabindex="-1"', true))
   }
@@ -69,7 +79,7 @@
   function ponerNavNormal () {
     console.log('No tienes una sesión iniciada, así que pongo en el navbar registrarse e inicar sesion')
     $('#lista-uno').html(noIniciado)
-    $('#mobile-demo').html(noIniciado)
+    $('#mobile-demo').html(noIniciado2)
   }
 
   function cierraSesion () {
