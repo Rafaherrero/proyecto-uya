@@ -35,3 +35,7 @@ Esto es necesario ya que usamos paquetes de autenticación.
 ## Abrimos los servidores
 
 Recordemos que la API REST es independiente del servidor que sirve los ficheros de front-end. Para encender la API REST ejecutamos `npm start` en el directorio raíz del servidor. Ahora podemos servir nuestros ficheros HTML como queramos, por ejemplo con el paquete de node `http-server`.
+
+## Autores
+* [Rafa Herrero](http://rafaherrero.github.io/)
+* [Daniel Ramos](http://danielramosacosta.github.io/#/)
